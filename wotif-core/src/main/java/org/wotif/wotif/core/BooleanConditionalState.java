@@ -1,15 +1,21 @@
 package org.wotif.wotif.core;
 
-public class BooleanConditionalState extends ConditionalState<Boolean> {
+import io.vavr.control.Either;
+
+public class BooleanConditionalState extends AbstractConditionalState<Boolean> {
 
     BooleanConditionalState(Boolean value) {
         super(value);
     }
 
+    @Override
     public BooleanConditionalState isTrue() {
         return this;
     }
 
-    public <T> T thenReturn(T valueToReturn) { return this.value ? valueToReturn : null; }
+    @Override
+    public <RESULT> ConditionResult<RESULT> thenReturn(RESULT valueToReturn) {
+        return new ConditionResult<RESULT>(this.value ? Either.right(valueToReturn) : Either.left(new ConditionResult<RESULT>()));
+    }
 
 }
