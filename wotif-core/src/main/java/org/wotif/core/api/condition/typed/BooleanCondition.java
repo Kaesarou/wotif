@@ -19,6 +19,8 @@ public class BooleanCondition extends AbstractCondition<Boolean> {
 
     public BooleanCondition isEqualTo(Boolean expected) { return new BooleanCondition(this.value.equals(expected)); }
 
+    public BooleanCondition isDifferentFrom(Boolean expected) { return new BooleanCondition(!this.value.equals(expected)); }
+
     public BooleanCondition isNull() { return new BooleanCondition(this.value == null); }
 
     public BooleanCondition isNotNull() { return new BooleanCondition(this.value != null); }

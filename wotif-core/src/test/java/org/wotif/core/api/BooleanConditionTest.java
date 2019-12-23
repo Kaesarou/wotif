@@ -70,6 +70,14 @@ public class BooleanConditionTest {
     }
 
     @Test
+    public void ifVariableIsNotEqualToTrueThenReturnZero() {
+        boolean variableToTest = true;
+        Integer result = Conditions.iF(variableToTest).isDifferentFrom(false)
+                .thenReturn(1).orElseReturn(0).end();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
     public void ifVariableIsNullThenReturnOne() {
         Boolean variableToTest = null;
         Integer result = Conditions.iF(variableToTest).isNull()
