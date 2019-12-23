@@ -1,6 +1,6 @@
-package org.wotif.wotif.core.condition;
+package org.wotif.core.api.condition;
 
-import org.wotif.wotif.core.AbstractReturnStatement;
+import org.wotif.core.api.AbstractReturnStatement;
 
 public interface ICondition<T> {
 

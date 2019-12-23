@@ -1,4 +1,4 @@
-package org.wotif.wotif.core;
+package org.wotif.core.api;
 
 public class ConditionsForInterfaceTypes extends ConditionsForClassTypes{
 }

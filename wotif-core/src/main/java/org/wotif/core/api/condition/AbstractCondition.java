@@ -1,4 +1,4 @@
-package org.wotif.wotif.core.condition;
+package org.wotif.core.api.condition;
 
 public abstract class AbstractCondition<T> implements ICondition<T> {
 
