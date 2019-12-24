@@ -1,6 +1,8 @@
-package org.wotif.core.api;
+package org.wotif.core.api.returnstatement;
 
 import io.vavr.control.Either;
+import org.wotif.core.api.returnstatement.AbstractReturnStatement;
+import org.wotif.core.api.returnstatement.AlternativeReturnStatement;
 
 public class ReturnStatement<RESULT> extends AbstractReturnStatement<RESULT> {
 

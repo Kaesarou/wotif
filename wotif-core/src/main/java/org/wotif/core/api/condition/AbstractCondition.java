@@ -1,11 +1,18 @@
 package org.wotif.core.api.condition;
 
-public abstract class AbstractCondition<T> implements ICondition<T> {
+import org.wotif.core.api.ConditionResult;
 
-    protected T value;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public AbstractCondition(T value){
-        this.value = value;
+public abstract class AbstractCondition<T> {
+
+    protected List<T> terms;
+
+    @SafeVarargs
+    public AbstractCondition(T... terms) {
+        this.terms = Arrays.stream(terms).collect(Collectors.toList());
     }
 
 }

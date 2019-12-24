@@ -1,4 +1,4 @@
-package org.wotif.core.api;
+package org.wotif.core.api.returnstatement;
 
 import io.vavr.control.Either;
 
