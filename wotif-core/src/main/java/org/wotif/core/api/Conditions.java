@@ -1,22 +1,23 @@
 package org.wotif.core.api;
 
-import org.wotif.core.api.condition.typed.booleans.MultipleBooleanCondition;
-import org.wotif.core.api.condition.typed.booleans.SingleBooleanCondition;
+import org.wotif.core.api.condition.typed.booleans.AllOfBooleanCondition;
+import org.wotif.core.api.condition.typed.booleans.JoinBooleanCondition;
+import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 
 public class Conditions {
 
     protected Conditions() {
     }
 
-    public static SingleBooleanCondition iF(Boolean term) {
+    public static BooleanCondition iF(Boolean term) {
         return ConditionsForInterfaceTypes.iF(term);
     }
 
-    public static MultipleBooleanCondition iFAnyOf(Boolean... terms) {
+    public static JoinBooleanCondition iFAnyOf(Boolean... terms) {
         return ConditionsForClassTypes.iFAnyOf(terms);
     }
 
-    //TODO: iFAllOf()
+    public static AllOfBooleanCondition iFAllOf(Boolean... terms) { return ConditionsForClassTypes.ifAllOf(terms); }
 
 }
 

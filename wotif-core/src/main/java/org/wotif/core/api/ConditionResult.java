@@ -10,8 +10,6 @@ public class ConditionResult {
 
     public boolean value() { return this.value; }
 
-    public ConditionResult() { this.value = false; }
-
     public ConditionResult(boolean value) { this.value = value; }
 
     public <RESULT> ReturnStatement<RESULT> thenReturn(RESULT valueToReturn) {

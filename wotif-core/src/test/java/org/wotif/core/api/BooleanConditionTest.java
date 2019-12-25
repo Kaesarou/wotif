@@ -3,7 +3,7 @@ package org.wotif.core.api;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class SingleBooleanConditionTest {
+public class BooleanConditionTest {
 
     @Test
     public void returnsOneWithoutExecutions() {
@@ -93,11 +93,4 @@ public class SingleBooleanConditionTest {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
-/*
-    @Test
-    public void ifAllOfThisBooleansIsTrueReturnOne() {
-        Integer result = Conditions.iFAllOf().isTrue().thanReturn(1).end();
-        Assertions.assertThat(result).isEqualTo(1);
-    }
-*/
 }
