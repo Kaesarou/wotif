@@ -1,7 +1,8 @@
-package org.wotif.core.api;
+package org.wotif.core.api.booleans;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import org.wotif.core.api.Conditions;
 
 public class AnyOfBooleanConditionalTest {
 
