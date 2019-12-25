@@ -10,7 +10,7 @@ public class AllOfBooleanConditionTest {
     public void testAllOfWithIsTrueThenReturnOne() {
         Integer result = Conditions.iFAllOf(true,true,true).isTrue()
                 .thenReturn(1)
-                .end();
+                .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -19,7 +19,7 @@ public class AllOfBooleanConditionTest {
         Integer result = Conditions.iFAllOf(true,true,false).isTrue()
                 .thenReturn(1)
                 .orElseReturn(0)
-                .end();
+                .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -28,7 +28,7 @@ public class AllOfBooleanConditionTest {
         Integer result = Conditions.iFAllOf(false,false,false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
-                .end();
+                .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -37,7 +37,7 @@ public class AllOfBooleanConditionTest {
         Integer result = Conditions.iFAllOf(true,false,false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
-                .end();
+                .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 

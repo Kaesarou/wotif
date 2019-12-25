@@ -12,7 +12,7 @@ public abstract class AbstractReturnStatement<RESULT> {
         this.value = eitherValue;
     }
 
-    public RESULT end() {
+    public RESULT endIF() {
         return this.value.getOrElse(()-> null);
     }
 

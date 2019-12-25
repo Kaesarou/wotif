@@ -9,14 +9,14 @@ public class BooleanConditionTest {
     @Test
     public void returnsOneWithoutExecutions() {
         boolean variableToTest = true;
-        Integer result = Conditions.iF(variableToTest).isTrue().thenReturn(1).end();
+        Integer result = Conditions.iF(variableToTest).isTrue().thenReturn(1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void returnNullWithoutExecutions() {
         boolean variableToTest = false;
-        Integer result = Conditions.iF(variableToTest).isTrue().thenReturn(1).end();
+        Integer result = Conditions.iF(variableToTest).isTrue().thenReturn(1).endIF();
         Assertions.assertThat(result).isNull();
     }
 
@@ -25,7 +25,7 @@ public class BooleanConditionTest {
         boolean variableToTest = false;
         Integer result = Conditions.iF(variableToTest).isTrue()
                 .thenReturn(1)
-                .orElseReturn(0).end();
+                .orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -34,7 +34,7 @@ public class BooleanConditionTest {
         boolean variableToTest = true;
         Integer result = Conditions.iF(variableToTest).isTrue()
                 .thenReturn(1)
-                .orElseReturn(0).end();
+                .orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -42,7 +42,7 @@ public class BooleanConditionTest {
     public void ifIsFalseThenReturnOne() {
         boolean variableToTest = false;
         Integer result = Conditions.iF(variableToTest).isFalse()
-                .thenReturn(1).end();
+                .thenReturn(1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -50,7 +50,7 @@ public class BooleanConditionTest {
     public void ifIsFalseThenReturnZero() {
         boolean variableToTest = false;
         Integer result = Conditions.iF(variableToTest).isFalse()
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -58,7 +58,7 @@ public class BooleanConditionTest {
     public void ifVariableIsEqualToTrueThenReturnOne() {
         boolean variableToTest = true;
         Integer result = Conditions.iF(variableToTest).isEqualTo(true)
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -66,7 +66,7 @@ public class BooleanConditionTest {
     public void ifVariableIsEqualToTrueThenReturnZero() {
         boolean variableToTest = true;
         Integer result = Conditions.iF(variableToTest).isEqualTo(false)
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -74,7 +74,7 @@ public class BooleanConditionTest {
     public void ifVariableIsNotEqualToTrueThenReturnZero() {
         boolean variableToTest = true;
         Integer result = Conditions.iF(variableToTest).isDifferentFrom(false)
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -82,7 +82,7 @@ public class BooleanConditionTest {
     public void ifVariableIsNullThenReturnOne() {
         Boolean variableToTest = null;
         Integer result = Conditions.iF(variableToTest).isNull()
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -90,8 +90,17 @@ public class BooleanConditionTest {
     public void ifVariableIsNotNullThenReturnOne() {
         boolean variableToTest = true;
         Integer result = Conditions.iF(variableToTest).isNotNull()
-                .thenReturn(1).orElseReturn(0).end();
+                .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
+
+//    @Test
+//    public void testTwoDifferentValuesWithIsTrueAndIsFalseThenReturnOne() {
+//        Integer result = Conditions.iF(true).isTrue()
+//                .and(false).isFalse()
+//                .thenReturn(1)
+//                .endIF();
+//        Assertions.assertThat(result).isEqualTo(1);
+//    }
 
 }
