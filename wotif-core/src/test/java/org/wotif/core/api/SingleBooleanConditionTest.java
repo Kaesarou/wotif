@@ -93,19 +93,6 @@ public class SingleBooleanConditionTest {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
-    @Test
-    public void ifAnyOfThisBooleansIsTrueReturnOne() {
-        Integer result = Conditions.iFAnyOf(false, true, false, false).isTrue().thenReturn(1).end();
-        Assertions.assertThat(result).isEqualTo(1);
-    }
-
-    @Test
-    public void ifAnyOfThisBooleansIsTrueReturnOneExpectedZero() {
-        Integer result = Conditions.iFAnyOf(false, false, false, false).isTrue()
-                .thenReturn(1)
-                .orElseReturn(0).end();
-        Assertions.assertThat(result).isEqualTo(0);
-    }
 /*
     @Test
     public void ifAllOfThisBooleansIsTrueReturnOne() {
