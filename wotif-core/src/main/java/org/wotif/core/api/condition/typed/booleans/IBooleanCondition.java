@@ -1,12 +1,12 @@
 package org.wotif.core.api.condition.typed.booleans;
 
-import org.wotif.core.api.ConditionResult;
+import org.wotif.core.api.Result;
 
 public interface IBooleanCondition {
-    ConditionResult isTrue();
-    ConditionResult isFalse();
-    ConditionResult isEqualTo(Boolean expected);
-    ConditionResult isDifferentFrom(Boolean expected);
-    ConditionResult isNull();
-    ConditionResult isNotNull();
+    Result isTrue();
+    Result isFalse();
+    Result isEqualTo(Boolean expected);
+    Result isDifferentFrom(Boolean expected);
+    Result isNull();
+    Result isNotNull();
 }

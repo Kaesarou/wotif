@@ -10,9 +10,9 @@ public class Conditions {
     private Conditions() {}
 
     public static BooleanCondition iF(Boolean term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static JoinBooleanCondition iFAnyOf(Boolean... terms) { return ConditionsForClassTypes.iFAnyOf(terms); }
-    public static AllOfBooleanCondition iFAllOf(Boolean... terms) { return ConditionsForClassTypes.iFAllOf(terms); }
-    public static NoneOfBooleanCondition iFNoneOf(Boolean... terms) { return ConditionsForClassTypes.iFNoneOf(terms); }
+    public static JoinBooleanCondition iFAnyOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
+    public static AllOfBooleanCondition iFAllOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
+    public static NoneOfBooleanCondition iFNoneOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
 
 }
 

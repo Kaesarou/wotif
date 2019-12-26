@@ -2,13 +2,13 @@ package org.wotif.core.api.booleans;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import org.wotif.core.api.Conditions;
+import static org.wotif.core.api.Conditions.*;
 
 public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsTrueThenReturnOne() {
-        Integer result = Conditions.iFNoneOf(false,false,false).isTrue()
+        Integer result = iFNoneOf(false,false,false).isTrue()
                 .thenReturn(1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
@@ -16,7 +16,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsTrueThenReturnZero() {
-        Integer result = Conditions.iFNoneOf(true,false,false).isTrue()
+        Integer result = iFNoneOf(true,false,false).isTrue()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -25,7 +25,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsFalseThenReturnOne() {
-        Integer result = Conditions.iFNoneOf(true,true,true).isFalse()
+        Integer result = iFNoneOf(true,true,true).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -34,7 +34,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsFalseThenReturnZero() {
-        Integer result = Conditions.iFNoneOf(true,true,false).isFalse()
+        Integer result = iFNoneOf(true,true,false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();

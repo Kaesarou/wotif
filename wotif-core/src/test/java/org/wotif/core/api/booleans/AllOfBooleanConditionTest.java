@@ -2,13 +2,13 @@ package org.wotif.core.api.booleans;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import org.wotif.core.api.Conditions;
+import static org.wotif.core.api.Conditions.*;
 
 public class AllOfBooleanConditionTest {
 
     @Test
     public void testAllOfWithIsTrueThenReturnOne() {
-        Integer result = Conditions.iFAllOf(true,true,true).isTrue()
+        Integer result = iFAllOf(true,true,true).isTrue()
                 .thenReturn(1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
@@ -16,7 +16,7 @@ public class AllOfBooleanConditionTest {
 
     @Test
     public void testAllOfWithIsTrueThenReturnZero() {
-        Integer result = Conditions.iFAllOf(true,true,false).isTrue()
+        Integer result = iFAllOf(true,true,false).isTrue()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -25,7 +25,7 @@ public class AllOfBooleanConditionTest {
 
     @Test
     public void testAllOfWithIsFalseThenReturnOne() {
-        Integer result = Conditions.iFAllOf(false,false,false).isFalse()
+        Integer result = iFAllOf(false,false,false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -34,7 +34,7 @@ public class AllOfBooleanConditionTest {
 
     @Test
     public void testAllOfWithIsFalseThenReturnZero() {
-        Integer result = Conditions.iFAllOf(true,false,false).isFalse()
+        Integer result = iFAllOf(true,false,false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
