@@ -1,7 +1,6 @@
 package org.wotif.core.api.condition;
 
 import org.wotif.core.api.CompletableResult;
-import org.wotif.core.api.Result;
 import java.util.List;
 import java.util.function.Predicate;
 

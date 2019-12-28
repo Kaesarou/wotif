@@ -1,10 +1,15 @@
 package org.wotif.core.api.condition.typed.booleans;
 
 import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.condition.NoneOfAbstractCondition;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-public class NoneOfBooleanCondition extends JoinBooleanCondition {
+public class NoneOfBooleanCondition extends NoneOfAbstractCondition <Boolean, BooleanCondition> implements IBooleanCondition {
 
-    public NoneOfBooleanCondition(Boolean... terms) { super(terms); }
+    public NoneOfBooleanCondition(Boolean... terms) {
+        super(Arrays.stream(terms).map(BooleanCondition::new).collect(Collectors.toList()));
+    }
 
     @Override
     public CompletableResult isTrue() { return noneOf(b -> b.isTrue().value()); }
@@ -12,15 +17,4 @@ public class NoneOfBooleanCondition extends JoinBooleanCondition {
     @Override
     public CompletableResult isFalse() { return noneOf(b -> b.isFalse().value()); }
 
-    @Override
-    public CompletableResult isEqualTo(Boolean expected) { return noneOf(b -> b.isEqualTo(expected).value()); }
-
-    @Override
-    public CompletableResult isDifferentFrom(Boolean expected) { return noneOf(b -> b.isDifferentFrom(expected).value()); }
-
-    @Override
-    public CompletableResult isNull() { return noneOf(b -> b.isNull().value()); }
-
-    @Override
-    public CompletableResult isNotNull() { return noneOf(b -> b.isNotNull().value()); }
 }

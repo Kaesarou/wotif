@@ -1,8 +1,8 @@
 package org.wotif.core.api;
 
 import io.vavr.control.Either;
-import org.wotif.core.api.returns.ElseReturn;
-import org.wotif.core.api.returns.Return;
+import org.wotif.core.api.actions.ElseActions;
+import org.wotif.core.api.actions.Actions;
 
 public class Result {
 
@@ -12,8 +12,8 @@ public class Result {
 
     public Result(boolean value) { this.value = value; }
 
-    public <RESULT> Return<RESULT> thenReturn(RESULT valueToReturn) {
-        return new Return<>(this.value() ? Either.right(valueToReturn) : Either.left(new ElseReturn<>()));
+    public <RESULT> Actions<RESULT> thenReturn(RESULT valueToReturn) {
+        return new Actions<>(this.value() ? Either.right(valueToReturn) : Either.left(new ElseActions<>()));
     }
 
     public Result thenExecute (CallBack callBack) {
