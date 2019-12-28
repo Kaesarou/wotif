@@ -2,7 +2,7 @@ package org.wotif.core.api.booleans;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-
+import java.util.concurrent.atomic.AtomicReference;
 import static org.wotif.core.api.Conditions.*;
 
 public class BooleanConditionTest {
@@ -108,7 +108,7 @@ public class BooleanConditionTest {
     public void testDifferentValuesWithIsTrueIsFalseOrAllOfIsTrueThenReturnOne() {
         Integer result = iF(false).isTrue()
                 .and(iF(true).isFalse())
-                .or(iFAllOf(true,true).isTrue())
+                .or(iFAllOf(true, true).isTrue())
                 .thenReturn(1).orElseReturn(0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
@@ -118,10 +118,31 @@ public class BooleanConditionTest {
     public void testDifferentValuesWithIsTrueIsFalseOrAllOfIsTrueThenReturnZero() {
         Integer result = iF(false).isTrue()
                 .and(iF(false).isFalse())
-                .or(iFAllOf(false,true).isTrue())
+                .or(iFAllOf(false, true).isTrue())
                 .thenReturn(1).orElseReturn(0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfVariableIsTrueThanExecuteMethod() {
+        Boolean variable = true;
+        AtomicReference<Boolean> result = new AtomicReference<>(false);
+        iF(variable).isTrue().thenExecute(() -> {
+            result.set(true);
+        });
+        Assertions.assertThat(result.get()).isTrue();
+    }
+
+    @Test
+    public void testIfVariableIsTrueThanDoNotExecuteMethod() {
+        Boolean variable = false;
+        AtomicReference<Boolean> result = new AtomicReference<>(null);
+        Integer conditionResult = iF(variable).isTrue().thenExecute(() -> {
+            result.set(true);
+        }).thenReturn(1).orElseExecute(()->{result.set(false);}).orElseReturn(0).endIF();
+        Assertions.assertThat(result.get()).isFalse();
+        Assertions.assertThat(conditionResult).isEqualTo(0);
     }
 
 }

@@ -1,5 +1,6 @@
 package org.wotif.core.api.condition;
 
+import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.Result;
 import java.util.List;
 import java.util.function.Predicate;
@@ -12,19 +13,19 @@ public abstract class JoinCondition<TYPE, CONDITION extends AbstractCondition<TY
         this.conditions = conditions;
     }
 
-    protected Result anyOf(Predicate<? super CONDITION> method) {
+    protected CompletableResult anyOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().anyMatch(method);
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
-    protected Result allOf(Predicate<? super CONDITION> method) {
+    protected CompletableResult allOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().allMatch(method);
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
-    protected Result noneOf(Predicate<? super CONDITION> method) {
+    protected CompletableResult noneOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().noneMatch(method);
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
 }

@@ -1,10 +1,8 @@
 package org.wotif.core.api;
 
 import io.vavr.control.Either;
-import org.wotif.core.api.condition.typed.booleans.AllOfBooleanCondition;
-import org.wotif.core.api.condition.typed.booleans.AnyOfBooleanCondition;
-import org.wotif.core.api.returnstatement.AlternativeReturnStatement;
-import org.wotif.core.api.returnstatement.ReturnStatement;
+import org.wotif.core.api.returns.ElseReturn;
+import org.wotif.core.api.returns.Return;
 
 public class Result {
 
@@ -14,16 +12,12 @@ public class Result {
 
     public Result(boolean value) { this.value = value; }
 
-    public Result and(Result result) {
-        return new AllOfBooleanCondition(result.value(), this.value).isTrue();
+    public <RESULT> Return<RESULT> thenReturn(RESULT valueToReturn) {
+        return new Return<>(this.value() ? Either.right(valueToReturn) : Either.left(new ElseReturn<>()));
     }
 
-    public Result or(Result result) {
-        return new AnyOfBooleanCondition(result.value(), this.value).isTrue();
+    public Result thenExecute (CallBack callBack) {
+        if(this.value()) callBack.execute();
+        return this;
     }
-
-    public <RESULT> ReturnStatement<RESULT> thenReturn(RESULT valueToReturn) {
-        return new ReturnStatement<>(this.value ? Either.right(valueToReturn) : Either.left(new AlternativeReturnStatement<>()));
-    }
-
 }

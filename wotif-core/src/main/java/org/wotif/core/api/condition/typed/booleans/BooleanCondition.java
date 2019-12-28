@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition.typed.booleans;
 
-import org.wotif.core.api.Result;
+import org.wotif.core.api.CompletableResult;
 
 public class BooleanCondition extends AbstractBooleanCondition {
 
@@ -9,39 +9,39 @@ public class BooleanCondition extends AbstractBooleanCondition {
     }
 
     @Override
-    public Result isTrue() {
+    public CompletableResult isTrue() {
         boolean value = this.term.value();
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public Result isFalse() {
+    public CompletableResult isFalse() {
         boolean value = !this.term.value();
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public Result isEqualTo(Boolean expected) {
+    public CompletableResult isEqualTo(Boolean expected) {
         boolean value = this.term.value().equals(expected);
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public Result isDifferentFrom(Boolean expected) {
+    public CompletableResult isDifferentFrom(Boolean expected) {
         boolean value = !this.term.value().equals(expected);
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public Result isNull() {
+    public CompletableResult isNull() {
         boolean value = this.term.value() == null;
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public Result isNotNull() {
+    public CompletableResult isNotNull() {
         boolean value = this.term.value() != null;
-        return new Result(value);
+        return new CompletableResult(value);
     }
 
 }
