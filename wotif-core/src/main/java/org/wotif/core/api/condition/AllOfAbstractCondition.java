@@ -17,5 +17,9 @@ public abstract class AllOfAbstractCondition <TYPE, CONDITION extends AbstractCo
     public CompletableResult isNull() { return allOf(b -> b.isNull().value()); }
     @Override
     public CompletableResult isNotNull() { return allOf(b -> b.isNotNull().value()); }
+    @Override
+    public CompletableResult isInstanceOf(Class<?> className) { return allOf(b -> b.isInstanceOf(className).value()); }
+    @Override
+    public CompletableResult isNotInstanceOf(Class<?> className) { return allOf(b -> b.isNotInstanceOf(className).value()); }
 
 }

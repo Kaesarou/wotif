@@ -1,5 +1,6 @@
 package org.wotif.core.api.strings;
 
+import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -119,9 +120,126 @@ public class StringConditionTest {
         AtomicReference<Boolean> result = new AtomicReference<>(null);
         Integer conditionResult = iF(variable).contains("none").thenExecute(() -> {
             result.set(true);
-        }).thenReturn(1).orElseExecute(()->{result.set(false);}).orElseReturn(0).endIF();
+        }).thenReturn(1).orElseExecute(() -> {
+            result.set(false);
+        }).orElseReturn(0).endIF();
         Assertions.assertThat(result.get()).isFalse();
         Assertions.assertThat(conditionResult).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfVariableDoNotContainsThenReturnOne() {
+        String variable = "string";
+        Integer result = iF(variable).notContains("none").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfVariableIsEmptyThenReturnZero() {
+        String variable = "string";
+        Integer result = iF(variable).isEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfVariableIsNotEmptyThenReturnOne() {
+        String variable = "string";
+        Integer result = iF(variable).isNotEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+        Assertions.assertThat("r").isInstanceOf(String.class);
+    }
+
+    @Test
+    public void testIfContainsIgnoringCaseThenReturnOne() {
+        String variable = "string";
+        Integer result = iF(variable).containsIgnoringCase("ING")
+                .thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfContainsIgnoringCaseThenReturnZero() {
+        String variable = "string";
+        Integer result = iF(variable).containsIgnoringCase("none")
+                .thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsEmptyThenReturnOne() {
+        String variable = "";
+        Integer result = iF(variable).isEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotEmptyThenReturnZero() {
+        String variable = "";
+        Integer result = iF(variable).isNotEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsBetweenThenReturnOne() {
+        String variable = "string";
+        Integer result = iF(variable).isBetween("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsBetweenThenReturnZero() {
+        String variable = "none";
+        Integer result = iF(variable).isBetween("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsBetweenIgnoringCaseThenReturnOne() {
+        String variable = "strIng";
+        Integer result = iF(variable).isBetweenIgnoringCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotBetweenThenReturnOne() {
+        String variable = "string";
+        Integer result = iF(variable).isNotBetween("string", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotBetweenIgnoringCaseThenReturnZero() {
+        String variable = "strIng";
+        Integer result = iF(variable).isNotBetweenIgnoringCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsEqualIgnoringCaseThenReturnOne() {
+        String variable = "strIng";
+        Integer result = iF(variable).isEqualToIgnoringCase("string").thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsDifferentFromThenReturnZero() {
+        String variable = "strIng";
+        Integer result = iF(variable).isDifferentFromIgnoringCase("string").thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsBlankThenReturnOne() {
+        String value = "   ";
+        Integer result = iF(value).isBlank().thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotBlankThenReturnOne() {
+        String value = "test";
+        Integer result = iF(value).isNotBlank().thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
     }
 
 }

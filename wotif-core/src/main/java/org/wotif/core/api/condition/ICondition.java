@@ -7,4 +7,6 @@ public interface ICondition<TYPE>{
     CompletableResult isDifferentFrom(TYPE expected);
     CompletableResult isNull();
     CompletableResult isNotNull();
+    CompletableResult isInstanceOf(Class<?> className);
+    CompletableResult isNotInstanceOf(Class<?> className);
 }

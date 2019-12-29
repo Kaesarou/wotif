@@ -17,4 +17,9 @@ public abstract class NoneOfAbstractCondition <TYPE, CONDITION extends AbstractC
     public CompletableResult isNull() { return noneOf(b -> b.isNull().value()); }
     @Override
     public CompletableResult isNotNull() { return noneOf(b -> b.isNotNull().value()); }
+    @Override
+    public CompletableResult isInstanceOf(Class<?> className) { return noneOf(b -> b.isInstanceOf(className).value()); }
+    @Override
+    public CompletableResult isNotInstanceOf(Class<?> className) { return noneOf(b -> b.isNotInstanceOf(className).value()); }
+
 }

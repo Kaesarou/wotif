@@ -17,5 +17,9 @@ public abstract class AnyOfAbstractCondition<TYPE, CONDITION extends AbstractCon
     public CompletableResult isNull() { return anyOf(b -> b.isNull().value()); }
     @Override
     public CompletableResult isNotNull() { return anyOf(b -> b.isNotNull().value()); }
+    @Override
+    public CompletableResult isInstanceOf(Class<?> className) { return anyOf(b -> b.isInstanceOf(className).value()); }
+    @Override
+    public CompletableResult isNotInstanceOf(Class<?> className) { return anyOf(b -> b.isNotInstanceOf(className).value()); }
 
 }

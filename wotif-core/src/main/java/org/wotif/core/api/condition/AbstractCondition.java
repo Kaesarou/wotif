@@ -35,4 +35,16 @@ public abstract class AbstractCondition<TYPE> implements ICondition<TYPE> {
         return new CompletableResult(value);
     }
 
+    @Override
+    public CompletableResult isInstanceOf(Class<?> className) {
+        boolean value = className.isInstance(this.term);
+        return new CompletableResult(value);
+    }
+
+    @Override
+    public CompletableResult isNotInstanceOf(Class<?> className) {
+        boolean value = !className.isInstance(this.term);
+        return new CompletableResult(value);
+    }
+
 }
