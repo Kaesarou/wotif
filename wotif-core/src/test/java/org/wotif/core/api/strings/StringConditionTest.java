@@ -242,4 +242,34 @@ public class StringConditionTest {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    public void testIfIsInstanceOfThenReturnOne() {
+        String value = "test";
+        Integer result = iF(value).isInstanceOf(String.class).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsInstanceOfThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isInstanceOf(Integer.class)
+                .thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsNotInstanceOfThenReturnOne() {
+        String value = "test";
+        Integer result = iF(value).isNotInstanceOf(Integer.class).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotInstanceOfThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isNotInstanceOf(String.class).thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
 }
