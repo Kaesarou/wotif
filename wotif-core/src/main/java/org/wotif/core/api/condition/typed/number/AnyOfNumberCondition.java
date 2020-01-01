@@ -12,8 +12,20 @@ public abstract class AnyOfNumberCondition<NUMBER extends Number & Comparable<NU
     }
 
     @Override
+    public CompletableResult isZero() { return anyOf(n -> n.isZero().value()); }
+    @Override
+    public CompletableResult isDifferentFromZero() { return anyOf(n -> n.isDifferentFromZero().value()); }
+    @Override
     public CompletableResult isPositive() { return anyOf(n -> n.isPositive().value()); }
     @Override
     public CompletableResult isNegative() { return anyOf(n -> n.isNegative().value()); }
+    @Override
+    public CompletableResult isLessThen(NUMBER numberToCompare) { return anyOf(n -> n.isLessThen(numberToCompare).value()); }
+    @Override
+    public CompletableResult isGreaterThen(NUMBER numberToCompare) { return anyOf(n -> n.isGreaterThen(numberToCompare).value()); }
+    @Override
+    public CompletableResult isEqualTo(NUMBER expected) { return anyOf(n -> n.isEqualTo(expected).value()); }
+    @Override
+    public CompletableResult isDifferentFrom(NUMBER expected) { return anyOf(n -> n.isDifferentFrom(expected).value()); }
 
 }

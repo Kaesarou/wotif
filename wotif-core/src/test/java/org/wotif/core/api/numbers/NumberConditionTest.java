@@ -39,4 +39,55 @@ public class NumberConditionTest {
         Assertions.assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    public void testIfZeroThenReturnOne() {
+        Integer result = iF(0).isZero().thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfNotZeroThenReturnOne() {
+        Integer result = iF(1).isDifferentFromZero().thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfNotZeroThenReturnZero() {
+        Integer result = iF(0).isDifferentFromZero().thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsLessThenReturnOne() {
+        Integer result = iF(5).isLessThen(10).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsLessThenReturnZero() {
+        Integer result = iF(10).isLessThen(10).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsEqualToThenReturnOne() {
+        Integer result = iF(10).isEqualTo(10).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsDifferentFromThenReturnZero() {
+        Integer result = iF(10).isDifferentFrom(10).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsGreaterThenReturnOne() {
+        Integer result = iF(10).isGreaterThen(5).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
 }

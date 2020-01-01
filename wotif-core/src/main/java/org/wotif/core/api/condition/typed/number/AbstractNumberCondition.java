@@ -12,6 +12,18 @@ public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable
     protected abstract NUMBER zero();
 
     @Override
+    public CompletableResult isZero() {
+        int i = term.value().compareTo(zero());
+        return new CompletableResult(i == 0);
+    }
+
+    @Override
+    public CompletableResult isDifferentFromZero() {
+        int i = term.value().compareTo(zero());
+        return new CompletableResult(i != 0);
+    }
+
+    @Override
     public CompletableResult isPositive() {
         int i = term.value().compareTo(zero());
         return new CompletableResult(i >= 0);
@@ -23,4 +35,27 @@ public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable
         return new CompletableResult(i < 0);
     }
 
+    @Override
+    public CompletableResult isLessThen(NUMBER numberToCompare) {
+        int i = term.value().compareTo(numberToCompare);
+        return new CompletableResult(i < 0);
+    }
+
+    @Override
+    public CompletableResult isGreaterThen(NUMBER numberToCompare) {
+        int i = term.value().compareTo(numberToCompare);
+        return new CompletableResult(i > 0);
+    }
+
+    @Override
+    public CompletableResult isEqualTo(NUMBER expected) {
+        int i = term.value().compareTo(expected);
+        return new CompletableResult(i == 0);
+    }
+
+    @Override
+    public CompletableResult isDifferentFrom(NUMBER expected) {
+        int i = term.value().compareTo(expected);
+        return new CompletableResult(i != 0);
+    }
 }
