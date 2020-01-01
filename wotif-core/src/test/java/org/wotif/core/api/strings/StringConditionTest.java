@@ -1,6 +1,5 @@
 package org.wotif.core.api.strings;
 
-import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
