@@ -121,7 +121,7 @@ public class StringConditionTest {
             result.set(true);
         }).thenReturn(1).orElseExecute(() -> {
             result.set(false);
-        }).orElseReturn(0).endIF();
+        }).thenReturn(0).endIF();
         Assertions.assertThat(result.get()).isFalse();
         Assertions.assertThat(conditionResult).isEqualTo(0);
     }
