@@ -1,8 +1,8 @@
 package org.wotif.core.api;
 
 import io.vavr.control.Either;
-import org.wotif.core.api.actions.FinalActions;
 import org.wotif.core.api.actions.ElseActions;
+import org.wotif.core.api.actions.FinalActions;
 
 public class Result {
 

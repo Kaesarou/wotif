@@ -1,32 +1,29 @@
 package org.wotif.core.api;
 
-import org.wotif.core.api.condition.AbstractCondition;
-import org.wotif.core.api.condition.typed.booleans.*;
-import org.wotif.core.api.condition.typed.number.integer.AllOfIntegerCondition;
-import org.wotif.core.api.condition.typed.number.integer.AnyOfIntegerCondition;
+import org.wotif.core.api.condition.JoinEnum;
+import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
+import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
-import org.wotif.core.api.condition.typed.number.integer.NoneOfIntegerCondition;
-import org.wotif.core.api.condition.typed.string.AllOfStringCondition;
-import org.wotif.core.api.condition.typed.string.AnyOfStringCondition;
-import org.wotif.core.api.condition.typed.string.NoneOfStringCondition;
+import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
+import org.wotif.core.api.condition.typed.string.StringJoinCondition;
 
 public class ConditionsForClassTypes {
 
     //Boolean
     public static BooleanCondition iF(Boolean term) { return new BooleanCondition(term); }
-    public static AnyOfBooleanCondition iFAnyOf(Boolean... terms) { return new AnyOfBooleanCondition(terms); }
-    public static AllOfBooleanCondition iFAllOf(Boolean... terms) { return new AllOfBooleanCondition(terms); }
-    public static NoneOfBooleanCondition iFNoneOf(Boolean... terms) { return new NoneOfBooleanCondition(terms); }
+    public static BooleanJoinCondition iFAnyOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.ANYOF, terms); }
+    public static BooleanJoinCondition iFAllOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.ALLOF, terms); }
+    public static BooleanJoinCondition iFNoneOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.NONEOF, terms); }
     //String
     public static StringCondition iF(String term) { return new StringCondition(term); }
-    public static AnyOfStringCondition iFAnyOf(String... terms) { return new AnyOfStringCondition(terms); }
-    public static AllOfStringCondition iFAllOf(String... terms) { return new AllOfStringCondition(terms); }
-    public static NoneOfStringCondition iFNoneOf(String... terms) { return new NoneOfStringCondition(terms); }
+    public static StringJoinCondition iFAnyOf(String... terms) { return new StringJoinCondition(JoinEnum.ANYOF, terms); }
+    public static StringJoinCondition iFAllOf(String... terms) { return new StringJoinCondition(JoinEnum.ALLOF, terms); }
+    public static StringJoinCondition iFNoneOf(String... terms) { return new StringJoinCondition(JoinEnum.NONEOF, terms); }
     //Integer
     public static IntegerCondition iF(Integer term) { return new IntegerCondition(term); }
-    public static AnyOfIntegerCondition iFAnyOf(Integer... terms) { return new AnyOfIntegerCondition(terms); }
-    public static AllOfIntegerCondition iFAllOf(Integer... terms) { return new AllOfIntegerCondition(terms); }
-    public static NoneOfIntegerCondition iFNoneOf(Integer... terms) { return new NoneOfIntegerCondition(terms); }
+    public static IntegerJoinCondition iFAnyOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.ANYOF, terms); }
+    public static IntegerJoinCondition iFAllOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.ALLOF, terms); }
+    public static IntegerJoinCondition iFNoneOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.NONEOF, terms); }
 
 }

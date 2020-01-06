@@ -2,7 +2,8 @@ package org.wotif.core.api.booleans;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import static org.wotif.core.api.Conditions.*;
+
+import static org.wotif.core.api.Conditions.iFAllOf;
 
 public class AllOfBooleanConditionTest {
 

@@ -7,6 +7,7 @@ public abstract class AbstractCondition<TYPE> implements ICondition<TYPE> {
 
     protected Term<TYPE> term;
 
+
     public AbstractCondition(TYPE term) {
         this.term = new Term<>(term);
     }
