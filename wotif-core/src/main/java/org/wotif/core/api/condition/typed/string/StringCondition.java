@@ -39,28 +39,28 @@ public class StringCondition extends AbstractCondition<String> implements IStrin
     }
 
     @Override
-    public CompletableResult isBetween(String stringContainer,String start, String end) {
+    public CompletableResult isContainedInSubstring(String stringContainer, String start, String end) {
         String substring = StringUtils.substringBetween(stringContainer,start,end);
         boolean value = StringUtils.contains(substring,this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
-    public CompletableResult isBetweenIgnoringCase(String stringContainer, String start, String end) {
+    public CompletableResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end) {
         String substring = StringUtils.substringBetween(stringContainer.toLowerCase(),start.toLowerCase(),end.toLowerCase());
         boolean value = StringUtils.containsIgnoreCase(substring,this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
-    public CompletableResult isNotBetween(String stringContainer, String start, String end) {
+    public CompletableResult isNotContainedInSubstring(String stringContainer, String start, String end) {
         String substring = StringUtils.substringBetween(stringContainer,start,end);
         boolean value = !StringUtils.contains(substring,this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
-    public CompletableResult isNotBetweenIgnoringCase(String stringContainer, String start, String end) {
+    public CompletableResult isNotContainedInSubstringIgnoreCase(String stringContainer, String start, String end) {
         String substring = StringUtils.substringBetween(stringContainer.toLowerCase(),start.toLowerCase(),end.toLowerCase());
         boolean value = !StringUtils.containsIgnoreCase(substring,this.term.value());
         return new CompletableResult(value);

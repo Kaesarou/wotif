@@ -26,13 +26,13 @@ public class StringJoinCondition extends AbstractJoinCondition<String,StringCond
     @Override
     public CompletableResult isNotEmpty() { return this.functionToApply.apply(s -> s.isNotEmpty().value()); }
     @Override
-    public CompletableResult isBetween(String stringContainer,String start, String end) { return this.functionToApply.apply(s -> s.isBetween(stringContainer,start,end).value()); }
+    public CompletableResult isContainedInSubstring(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isContainedInSubstring(stringContainer,start,end).value()); }
     @Override
-    public CompletableResult isBetweenIgnoringCase(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isBetweenIgnoringCase(stringContainer,start,end).value()); }
+    public CompletableResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isContainedInSubstringIgnoreCase(stringContainer,start,end).value()); }
     @Override
-    public CompletableResult isNotBetween(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isNotBetween(stringContainer,start,end).value()); }
+    public CompletableResult isNotContainedInSubstring(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isNotContainedInSubstring(stringContainer,start,end).value()); }
     @Override
-    public CompletableResult isNotBetweenIgnoringCase(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isNotBetweenIgnoringCase(stringContainer,start,end).value()); }
+    public CompletableResult isNotContainedInSubstringIgnoreCase(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isNotContainedInSubstringIgnoreCase(stringContainer,start,end).value()); }
     @Override
     public CompletableResult isEqualToIgnoringCase(String string) { return this.functionToApply.apply(s -> s.isEqualToIgnoringCase(string).value()); }
     @Override

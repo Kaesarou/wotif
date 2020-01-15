@@ -181,35 +181,35 @@ public class StringConditionTest {
     @Test
     public void testIfIsBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isBetween("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsBetweenThenReturnZero() {
         String variable = "none";
-        Integer result = iF(variable).isBetween("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsBetweenIgnoringCaseThenReturnOne() {
         String variable = "strIng";
-        Integer result = iF(variable).isBetweenIgnoringCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstringIgnoreCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isNotBetween("string", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstring("string", "start", "end").thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenIgnoringCaseThenReturnZero() {
         String variable = "strIng";
-        Integer result = iF(variable).isNotBetweenIgnoringCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstringIgnoreCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
