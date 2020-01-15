@@ -91,4 +91,44 @@ public class NumberConditionTest {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    public void testIfIsBetween3And9ThenReturnOne() {
+        Integer result = iF(5).isBetween(3,9).thenReturn(1).endIF();
+        Integer secondResult = iF(3).isBetween(3,9).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+        Assertions.assertThat(secondResult).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsBetween3And9ThenReturnZero() {
+        Integer result = iF(11).isBetween(3,9).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsNotBetween3And9ThenReturnOne() {
+        Integer result = iF(11).isNotBetween(3,9).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotBetween3And9ThenReturnZero() {
+        Integer result = iF(4).isNotBetween(3,9).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsStrictlyBetween3And9ThenReturnOne() {
+        Integer result = iF(5).isStrictlyBetween(3,9).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsStrictlyBetween3And9ThenReturnZero() {
+        Integer result = iF(3).isStrictlyBetween(3,9).thenReturn(1).orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
 }

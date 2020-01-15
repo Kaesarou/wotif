@@ -58,4 +58,25 @@ public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable
         int i = term.value().compareTo(expected);
         return new CompletableResult(i != 0);
     }
+
+    @Override
+    public CompletableResult isBetween(NUMBER start, NUMBER end) {
+        int i = term.value().compareTo(start);
+        int j = term.value().compareTo(end);
+        return new CompletableResult(i >= 0 && j <= 0);
+    }
+
+    @Override
+    public CompletableResult isNotBetween(NUMBER start, NUMBER end) {
+        int i = term.value().compareTo(start);
+        int j = term.value().compareTo(end);
+        return new CompletableResult(i < 0 || j > 0);
+    }
+
+    @Override
+    public CompletableResult isStrictlyBetween(NUMBER start, NUMBER end) {
+        int i = term.value().compareTo(start);
+        int j = term.value().compareTo(end);
+        return new CompletableResult(i > 0 && j < 0);
+    }
 }

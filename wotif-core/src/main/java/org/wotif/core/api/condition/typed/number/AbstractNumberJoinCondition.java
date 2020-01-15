@@ -27,5 +27,11 @@ public abstract class AbstractNumberJoinCondition<NUMBER extends Number & Compar
     public CompletableResult isEqualTo(NUMBER expected) { return this.functionToApply.apply(n -> n.isEqualTo(expected).value()); }
     @Override
     public CompletableResult isDifferentFrom(NUMBER expected) { return this.functionToApply.apply(n -> n.isDifferentFrom(expected).value()); }
+    @Override
+    public CompletableResult isBetween(NUMBER start, NUMBER end) { return this.functionToApply.apply(n -> n.isBetween(start,end).value()); }
+    @Override
+    public CompletableResult isNotBetween(NUMBER start, NUMBER end) { return this.functionToApply.apply(n -> n.isNotBetween(start,end).value()); }
+    @Override
+    public CompletableResult isStrictlyBetween(NUMBER start, NUMBER end) { return this.functionToApply.apply(n -> n.isStrictlyBetween(start,end).value()); }
 
 }

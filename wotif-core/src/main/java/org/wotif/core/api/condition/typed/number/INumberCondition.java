@@ -11,5 +11,8 @@ public interface INumberCondition<NUMBER> extends ICondition<NUMBER> {
     CompletableResult isNegative();
     CompletableResult isLessThen(NUMBER numberToCompare);
     CompletableResult isGreaterThen(NUMBER numberToCompare);
+    CompletableResult isBetween(NUMBER start, NUMBER end);
+    CompletableResult isNotBetween(NUMBER start, NUMBER end);
+    CompletableResult isStrictlyBetween(NUMBER start, NUMBER end);
 
 }
