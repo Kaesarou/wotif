@@ -2,6 +2,8 @@ package org.wotif.core.api;
 
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
+import org.wotif.core.api.condition.typed.number.doubles.DoubleCondition;
+import org.wotif.core.api.condition.typed.number.doubles.DoubleJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
@@ -26,6 +28,12 @@ public class Conditions {
     public static IntegerJoinCondition iFAnyOf(Integer... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
     public static IntegerJoinCondition iFAllOf(Integer... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
     public static IntegerJoinCondition iFNoneOf(Integer... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    //Double
+    public static DoubleCondition iF(Double term) { return ConditionsForInterfaceTypes.iF(term); }
+    public static DoubleJoinCondition iFAnyOf(Double... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
+    public static DoubleJoinCondition iFAllOf(Double... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
+    public static DoubleJoinCondition iFNoneOf(Double... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+
 }
 
 

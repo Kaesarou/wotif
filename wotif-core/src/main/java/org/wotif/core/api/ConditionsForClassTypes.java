@@ -3,6 +3,8 @@ package org.wotif.core.api;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
+import org.wotif.core.api.condition.typed.number.doubles.DoubleCondition;
+import org.wotif.core.api.condition.typed.number.doubles.DoubleJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
@@ -25,5 +27,10 @@ public class ConditionsForClassTypes {
     public static IntegerJoinCondition iFAnyOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.ANYOF, terms); }
     public static IntegerJoinCondition iFAllOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.ALLOF, terms); }
     public static IntegerJoinCondition iFNoneOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.NONEOF, terms); }
+    //Double
+    public static DoubleCondition iF(Double term) { return new DoubleCondition(term); }
+    public static DoubleJoinCondition iFAnyOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.ANYOF, terms); }
+    public static DoubleJoinCondition iFAllOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.ALLOF, terms); }
+    public static DoubleJoinCondition iFNoneOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.NONEOF, terms); }
 
 }
