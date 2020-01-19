@@ -1,10 +1,10 @@
 package org.wotif.core.api.condition.typed.string;
 
 import org.wotif.core.api.CompletableResult;
-import org.wotif.core.api.condition.AbstractJoinCondition;
 import org.wotif.core.api.condition.JoinEnum;
+import org.wotif.core.api.condition.typed.ComparableJoinCondition;
 
-public class StringJoinCondition extends AbstractJoinCondition<String,StringCondition> implements IStringCondition {
+public class StringJoinCondition extends ComparableJoinCondition<String,StringCondition> implements IStringCondition {
 
     public StringJoinCondition(JoinEnum joinType, String... terms) {
         super(joinType, terms);

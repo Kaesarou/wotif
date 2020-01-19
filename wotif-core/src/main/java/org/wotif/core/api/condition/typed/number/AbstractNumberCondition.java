@@ -1,9 +1,9 @@
 package org.wotif.core.api.condition.typed.number;
 
 import org.wotif.core.api.CompletableResult;
-import org.wotif.core.api.condition.AbstractCondition;
+import org.wotif.core.api.condition.typed.ComparableCondition;
 
-public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable<NUMBER>> extends AbstractCondition<NUMBER> implements INumberCondition<NUMBER> {
+public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable<NUMBER>> extends ComparableCondition<NUMBER> implements INumberCondition<NUMBER> {
 
     protected AbstractNumberCondition(NUMBER term) {
         super(term);
@@ -35,48 +35,4 @@ public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable
         return new CompletableResult(i < 0);
     }
 
-    @Override
-    public CompletableResult isLessThen(NUMBER numberToCompare) {
-        int i = term.value().compareTo(numberToCompare);
-        return new CompletableResult(i < 0);
-    }
-
-    @Override
-    public CompletableResult isGreaterThen(NUMBER numberToCompare) {
-        int i = term.value().compareTo(numberToCompare);
-        return new CompletableResult(i > 0);
-    }
-
-    @Override
-    public CompletableResult isEqualTo(NUMBER expected) {
-        int i = term.value().compareTo(expected);
-        return new CompletableResult(i == 0);
-    }
-
-    @Override
-    public CompletableResult isDifferentFrom(NUMBER expected) {
-        int i = term.value().compareTo(expected);
-        return new CompletableResult(i != 0);
-    }
-
-    @Override
-    public CompletableResult isBetween(NUMBER start, NUMBER end) {
-        int i = term.value().compareTo(start);
-        int j = term.value().compareTo(end);
-        return new CompletableResult(i >= 0 && j <= 0);
-    }
-
-    @Override
-    public CompletableResult isNotBetween(NUMBER start, NUMBER end) {
-        int i = term.value().compareTo(start);
-        int j = term.value().compareTo(end);
-        return new CompletableResult(i < 0 || j > 0);
-    }
-
-    @Override
-    public CompletableResult isStrictlyBetween(NUMBER start, NUMBER end) {
-        int i = term.value().compareTo(start);
-        int j = term.value().compareTo(end);
-        return new CompletableResult(i > 0 && j < 0);
-    }
 }

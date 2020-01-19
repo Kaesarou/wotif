@@ -1,9 +1,9 @@
 package org.wotif.core.api.condition.typed.string;
 
 import org.wotif.core.api.CompletableResult;
-import org.wotif.core.api.condition.ICondition;
+import org.wotif.core.api.condition.typed.IComparableCondition;
 
-public interface IStringCondition extends ICondition<String> {
+public interface IStringCondition extends IComparableCondition<String> {
 
     CompletableResult contains(String contains);
     CompletableResult containsIgnoringCase(String contains);

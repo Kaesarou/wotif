@@ -2,9 +2,9 @@ package org.wotif.core.api.condition.typed.string;
 
 import org.apache.commons.lang3.StringUtils;
 import org.wotif.core.api.CompletableResult;
-import org.wotif.core.api.condition.AbstractCondition;
+import org.wotif.core.api.condition.typed.ComparableCondition;
 
-public class StringCondition extends AbstractCondition<String> implements IStringCondition {
+public class StringCondition extends ComparableCondition<String> implements IStringCondition {
 
     public StringCondition(String term) { super(term); }
 
