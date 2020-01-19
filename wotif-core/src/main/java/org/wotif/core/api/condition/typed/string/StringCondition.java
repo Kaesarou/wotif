@@ -39,6 +39,30 @@ public class StringCondition extends ComparableCondition<String> implements IStr
     }
 
     @Override
+    public CompletableResult isContainedIn(String stringContainer) {
+        boolean value = stringContainer.contains(this.term.value());
+        return new CompletableResult(value);
+    }
+
+    @Override
+    public CompletableResult isNotContainedIn(String stringContainer) {
+        boolean value = !stringContainer.contains(this.term.value());
+        return new CompletableResult(value);
+    }
+
+    @Override
+    public CompletableResult isContainedInIgnoreCase(String stringContainer) {
+        boolean value = StringUtils.containsIgnoreCase(stringContainer, this.term.value());
+        return new CompletableResult(value);
+    }
+
+    @Override
+    public CompletableResult isNotContainedInIgnoreCase(String stringContainer) {
+        boolean value = !StringUtils.containsIgnoreCase(stringContainer, this.term.value());
+        return new CompletableResult(value);
+    }
+
+    @Override
     public CompletableResult isContainedInSubstring(String stringContainer, String start, String end) {
         String substring = StringUtils.substringBetween(stringContainer,start,end);
         boolean value = StringUtils.contains(substring,this.term.value());

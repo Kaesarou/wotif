@@ -271,4 +271,64 @@ public class StringConditionTest {
         Assertions.assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    public void testIfContainedInThenReturnOne() {
+        String value = "test";
+        Integer result = iF(value).isContainedIn("abctestabc").thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfContainedInThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isContainedIn("abcabc").thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfContainedInIgnoreCaseThenReturnOne() {
+        String value = "TEST";
+        Integer result = iF(value).isContainedInIgnoreCase("abctestabc").thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfContainedInIgnoreCaseThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isContainedInIgnoreCase("abcabc").thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfNotContainedInThenReturnOne() {
+        String value = "test";
+        Integer result = iF(value).isNotContainedIn("abcabc").thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfNotContainedInThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isNotContainedIn("abctestabc").thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfNotContainedInIgnoreCaseThenReturnOne() {
+        String value = "TEST";
+        Integer result = iF(value).isNotContainedInIgnoreCase("abcabc").thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfNotContainedInIgnoreCaseThenReturnZero() {
+        String value = "test";
+        Integer result = iF(value).isNotContainedInIgnoreCase("abcTESTabc").thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
 }

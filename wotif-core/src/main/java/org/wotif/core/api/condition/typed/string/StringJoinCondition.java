@@ -26,6 +26,14 @@ public class StringJoinCondition extends ComparableJoinCondition<String,StringCo
     @Override
     public CompletableResult isNotEmpty() { return this.functionToApply.apply(s -> s.isNotEmpty().value()); }
     @Override
+    public CompletableResult isContainedIn(String stringContainer) { return this.functionToApply.apply(s -> s.isContainedIn(stringContainer).value()); }
+    @Override
+    public CompletableResult isNotContainedIn(String stringContainer) { return this.functionToApply.apply(s -> s.isNotContainedIn(stringContainer).value()); }
+    @Override
+    public CompletableResult isContainedInIgnoreCase(String stringContainer) { return this.functionToApply.apply(s -> s.isContainedInIgnoreCase(stringContainer).value()); }
+    @Override
+    public CompletableResult isNotContainedInIgnoreCase(String stringContainer) { return this.functionToApply.apply(s -> s.isNotContainedInIgnoreCase(stringContainer).value()); }
+    @Override
     public CompletableResult isContainedInSubstring(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isContainedInSubstring(stringContainer,start,end).value()); }
     @Override
     public CompletableResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end) { return this.functionToApply.apply(s -> s.isContainedInSubstringIgnoreCase(stringContainer,start,end).value()); }
