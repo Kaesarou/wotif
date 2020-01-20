@@ -129,6 +129,33 @@ public class NumberConditionTest {
     public void testIfIsStrictlyBetween3And9ThenReturnZero() {
         Integer result = iF(3).isStrictlyBetween(3,9).thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
+
+    }
+
+    @Test
+    public void testIfIsCloseThenReturnOne() {
+        Integer result = iF(3.6).isCloseTo(4).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsCloseThenReturnZero() {
+        Integer result = iF(3.4).isCloseTo(4).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfIsNotCloseThenReturnOne() {
+        Integer result = iF(3.4).isNotCloseTo(4).thenReturn(1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfIsNotCloseThenReturnZero() {
+        Integer result = iF(3.6).isNotCloseTo(4).thenReturn(1)
+                .orElseReturn(0).endIF();
+        Assertions.assertThat(result).isEqualTo(0);
     }
 
 }

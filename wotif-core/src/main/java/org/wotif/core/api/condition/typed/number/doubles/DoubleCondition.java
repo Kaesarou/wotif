@@ -11,12 +11,18 @@ public class DoubleCondition extends AbstractNumberCondition<Double> implements 
     protected Double zero() { return (double) 0; }
 
     @Override
-    public CompletableResult isNearTo(Integer expected) {
-        return null;
+    public CompletableResult isCloseTo(Integer expected) {
+        long round = Math.round(this.term.value());
+        long converted = Long.valueOf(expected);
+        boolean value = round == converted;
+        return new CompletableResult(value);
     }
 
     @Override
-    public CompletableResult isNotNearTo(Integer expected) {
-        return null;
+    public CompletableResult isNotCloseTo(Integer expected) {
+        long round = Math.round(this.term.value());
+        long converted = Long.valueOf(expected);
+        boolean value = round != converted;
+        return new CompletableResult(value);
     }
 }
