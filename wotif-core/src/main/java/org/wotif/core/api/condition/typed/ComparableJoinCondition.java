@@ -12,21 +12,43 @@ public abstract class ComparableJoinCondition<COMPARABLE_TYPE extends Comparable
     public ComparableJoinCondition(JoinEnum joinType, COMPARABLE_TYPE... terms) {
         super(joinType, terms);
     }
+
     @Override
     protected abstract COMPARABLE_CONDITION getInstanceOfCondition(COMPARABLE_TYPE term);
+
     @Override
-    public CompletableResult isLessThen(COMPARABLE_TYPE termToCompare) { return this.functionToApply.apply(n -> n.isLessThen(termToCompare).value()); }
+    public CompletableResult isLessThen(COMPARABLE_TYPE termToCompare) {
+        return this.functionToApply.apply(n -> n.isLessThen(termToCompare).value());
+    }
+
     @Override
-    public CompletableResult isGreaterThen(COMPARABLE_TYPE termToCompare) { return this.functionToApply.apply(n -> n.isGreaterThen(termToCompare).value()); }
+    public CompletableResult isGreaterThen(COMPARABLE_TYPE termToCompare) {
+        return this.functionToApply.apply(n -> n.isGreaterThen(termToCompare).value());
+    }
+
     @Override
-    public CompletableResult isEqualTo(COMPARABLE_TYPE expected) { return this.functionToApply.apply(n -> n.isEqualTo(expected).value()); }
+    public CompletableResult isEqualTo(COMPARABLE_TYPE expected) {
+        return this.functionToApply.apply(n -> n.isEqualTo(expected).value());
+    }
+
     @Override
-    public CompletableResult isDifferentFrom(COMPARABLE_TYPE expected) { return this.functionToApply.apply(n -> n.isDifferentFrom(expected).value()); }
+    public CompletableResult isDifferentFrom(COMPARABLE_TYPE expected) {
+        return this.functionToApply.apply(n -> n.isDifferentFrom(expected).value());
+    }
+
     @Override
-    public CompletableResult isBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) { return this.functionToApply.apply(n -> n.isBetween(start,end).value()); }
+    public CompletableResult isBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) {
+        return this.functionToApply.apply(n -> n.isBetween(start, end).value());
+    }
+
     @Override
-    public CompletableResult isNotBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) { return this.functionToApply.apply(n -> n.isNotBetween(start,end).value()); }
+    public CompletableResult isNotBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) {
+        return this.functionToApply.apply(n -> n.isNotBetween(start, end).value());
+    }
+
     @Override
-    public CompletableResult isStrictlyBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) { return this.functionToApply.apply(n -> n.isStrictlyBetween(start,end).value()); }
+    public CompletableResult isStrictlyBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end) {
+        return this.functionToApply.apply(n -> n.isStrictlyBetween(start, end).value());
+    }
 
 }

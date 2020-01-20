@@ -9,7 +9,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsTrueThenReturnOne() {
-        Integer result = iFNoneOf(false,false,false).isTrue()
+        Integer result = iFNoneOf(false, false, false).isTrue()
                 .thenReturn(1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
@@ -17,7 +17,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsTrueThenReturnZero() {
-        Integer result = iFNoneOf(true,false,false).isTrue()
+        Integer result = iFNoneOf(true, false, false).isTrue()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -26,7 +26,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsFalseThenReturnOne() {
-        Integer result = iFNoneOf(true,true,true).isFalse()
+        Integer result = iFNoneOf(true, true, true).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -35,7 +35,7 @@ public class NoneOfBooleanConditionTest {
 
     @Test
     public void testNoneOfWithIsFalseThenReturnZero() {
-        Integer result = iFNoneOf(true,true,false).isFalse()
+        Integer result = iFNoneOf(true, true, false).isFalse()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();

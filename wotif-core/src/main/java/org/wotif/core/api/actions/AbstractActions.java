@@ -13,7 +13,7 @@ public abstract class AbstractActions<RESULT> {
     }
 
     public RESULT endIF() {
-        return this.value.getOrElse(()-> null);
+        return this.value.getOrElse(() -> null);
     }
 
 }

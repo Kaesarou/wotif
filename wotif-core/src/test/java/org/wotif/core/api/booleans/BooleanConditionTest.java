@@ -143,7 +143,9 @@ public class BooleanConditionTest {
         AtomicReference<Boolean> result = new AtomicReference<>(null);
         Integer conditionResult = iF(variable).isTrue().thenExecute(() -> {
             result.set(true);
-        }).thenReturn(1).orElseExecute(()->{result.set(false);}).thenReturn(0).endIF();
+        }).thenReturn(1).orElseExecute(() -> {
+            result.set(false);
+        }).thenReturn(0).endIF();
         Assertions.assertThat(result.get()).isFalse();
         Assertions.assertThat(conditionResult).isEqualTo(0);
     }

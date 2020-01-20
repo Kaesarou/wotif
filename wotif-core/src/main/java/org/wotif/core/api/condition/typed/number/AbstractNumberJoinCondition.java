@@ -8,17 +8,31 @@ public abstract class AbstractNumberJoinCondition<NUMBER extends Number & Compar
         extends ComparableJoinCondition<NUMBER, NUMBER_CONDITION> implements INumberCondition<NUMBER> {
 
     @SafeVarargs
-    public AbstractNumberJoinCondition(JoinEnum joinType, NUMBER... terms) { super(joinType, terms); }
+    public AbstractNumberJoinCondition(JoinEnum joinType, NUMBER... terms) {
+        super(joinType, terms);
+    }
 
     @Override
     protected abstract NUMBER_CONDITION getInstanceOfCondition(NUMBER term);
+
     @Override
-    public CompletableResult isZero() { return this.functionToApply.apply(n -> n.isZero().value()); }
+    public CompletableResult isZero() {
+        return this.functionToApply.apply(n -> n.isZero().value());
+    }
+
     @Override
-    public CompletableResult isDifferentFromZero() { return this.functionToApply.apply(n -> n.isDifferentFromZero().value()); }
+    public CompletableResult isDifferentFromZero() {
+        return this.functionToApply.apply(n -> n.isDifferentFromZero().value());
+    }
+
     @Override
-    public CompletableResult isPositive() { return this.functionToApply.apply(n -> n.isPositive().value()); }
+    public CompletableResult isPositive() {
+        return this.functionToApply.apply(n -> n.isPositive().value());
+    }
+
     @Override
-    public CompletableResult isNegative() { return this.functionToApply.apply(n -> n.isNegative().value()); }
+    public CompletableResult isNegative() {
+        return this.functionToApply.apply(n -> n.isNegative().value());
+    }
 
 }

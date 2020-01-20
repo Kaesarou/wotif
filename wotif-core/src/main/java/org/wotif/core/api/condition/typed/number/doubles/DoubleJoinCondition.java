@@ -12,11 +12,18 @@ public class DoubleJoinCondition extends AbstractNumberJoinCondition<Double, Dou
     }
 
     @Override
-    protected DoubleCondition getInstanceOfCondition(Double term) { return new DoubleCondition(term); }
+    protected DoubleCondition getInstanceOfCondition(Double term) {
+        return new DoubleCondition(term);
+    }
 
     @Override
-    public CompletableResult isCloseTo(Integer expected) { return this.functionToApply.apply(n -> n.isCloseTo(expected).value()); }
+    public CompletableResult isCloseTo(Integer expected) {
+        return this.functionToApply.apply(n -> n.isCloseTo(expected).value());
+    }
+
     @Override
-    public CompletableResult isNotCloseTo(Integer expected) { return this.functionToApply.apply(n -> n.isNotCloseTo(expected).value()); }
+    public CompletableResult isNotCloseTo(Integer expected) {
+        return this.functionToApply.apply(n -> n.isNotCloseTo(expected).value());
+    }
 
 }

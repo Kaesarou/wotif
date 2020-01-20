@@ -4,7 +4,7 @@ import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.condition.AbstractCondition;
 
 public abstract class ComparableCondition<COMPARABLE_TYPE extends Comparable<COMPARABLE_TYPE>>
-        extends AbstractCondition<COMPARABLE_TYPE> implements IComparableCondition<COMPARABLE_TYPE>{
+        extends AbstractCondition<COMPARABLE_TYPE> implements IComparableCondition<COMPARABLE_TYPE> {
 
     public ComparableCondition(COMPARABLE_TYPE term) {
         super(term);

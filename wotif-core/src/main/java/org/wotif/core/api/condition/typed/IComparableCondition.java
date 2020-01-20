@@ -7,13 +7,19 @@ public interface IComparableCondition<COMPARABLE_TYPE extends Comparable<COMPARA
         extends ICondition<COMPARABLE_TYPE> {
 
     CompletableResult isLessThen(COMPARABLE_TYPE termToCompare);
+
     CompletableResult isGreaterThen(COMPARABLE_TYPE termToCompare);
+
     CompletableResult isBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end);
+
     CompletableResult isNotBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end);
+
     CompletableResult isStrictlyBetween(COMPARABLE_TYPE start, COMPARABLE_TYPE end);
+
     @Override
     CompletableResult isEqualTo(COMPARABLE_TYPE expected);
+
     @Override
     CompletableResult isDifferentFrom(COMPARABLE_TYPE expected);
-    
+
 }

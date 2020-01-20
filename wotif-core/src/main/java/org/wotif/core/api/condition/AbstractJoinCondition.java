@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCondition<TYPE> > implements ICondition<TYPE> {
+public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCondition<TYPE>> implements ICondition<TYPE> {
 
     protected List<CONDITION> conditions;
 
@@ -43,16 +43,33 @@ public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCond
     }
 
     @Override
-    public CompletableResult isEqualTo(TYPE expected) { return this.functionToApply.apply(b -> b.isEqualTo(expected).value()); }
+    public CompletableResult isEqualTo(TYPE expected) {
+        return this.functionToApply.apply(b -> b.isEqualTo(expected).value());
+    }
+
     @Override
-    public CompletableResult isDifferentFrom(TYPE expected) { return this.functionToApply.apply(b -> b.isDifferentFrom(expected).value()); }
+    public CompletableResult isDifferentFrom(TYPE expected) {
+        return this.functionToApply.apply(b -> b.isDifferentFrom(expected).value());
+    }
+
     @Override
-    public CompletableResult isNull() { return this.functionToApply.apply(b -> b.isNull().value()); }
+    public CompletableResult isNull() {
+        return this.functionToApply.apply(b -> b.isNull().value());
+    }
+
     @Override
-    public CompletableResult isNotNull() { return this.functionToApply.apply(b -> b.isNotNull().value()); }
+    public CompletableResult isNotNull() {
+        return this.functionToApply.apply(b -> b.isNotNull().value());
+    }
+
     @Override
-    public CompletableResult isInstanceOf(Class<?> className) { return this.functionToApply.apply(b -> b.isInstanceOf(className).value()); }
+    public CompletableResult isInstanceOf(Class<?> className) {
+        return this.functionToApply.apply(b -> b.isInstanceOf(className).value());
+    }
+
     @Override
-    public CompletableResult isNotInstanceOf(Class<?> className) { return this.functionToApply.apply(b -> b.isNotInstanceOf(className).value()); }
+    public CompletableResult isNotInstanceOf(Class<?> className) {
+        return this.functionToApply.apply(b -> b.isNotInstanceOf(className).value());
+    }
 
 }

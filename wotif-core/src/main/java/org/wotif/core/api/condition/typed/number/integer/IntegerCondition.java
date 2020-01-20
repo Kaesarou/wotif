@@ -4,9 +4,13 @@ import org.wotif.core.api.condition.typed.number.AbstractNumberCondition;
 
 public class IntegerCondition extends AbstractNumberCondition<Integer> {
 
-    public IntegerCondition(Integer term) { super(term); }
+    public IntegerCondition(Integer term) {
+        super(term);
+    }
 
     @Override
-    protected Integer zero() { return 0; }
+    protected Integer zero() {
+        return 0;
+    }
 
 }

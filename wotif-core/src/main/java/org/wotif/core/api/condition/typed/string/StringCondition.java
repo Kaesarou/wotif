@@ -6,7 +6,9 @@ import org.wotif.core.api.condition.typed.ComparableCondition;
 
 public class StringCondition extends ComparableCondition<String> implements IStringCondition {
 
-    public StringCondition(String term) { super(term); }
+    public StringCondition(String term) {
+        super(term);
+    }
 
     @Override
     public CompletableResult contains(String contains) {
@@ -16,7 +18,7 @@ public class StringCondition extends ComparableCondition<String> implements IStr
 
     @Override
     public CompletableResult containsIgnoringCase(String contains) {
-        boolean value = StringUtils.containsIgnoreCase(this.term.value(),contains);
+        boolean value = StringUtils.containsIgnoreCase(this.term.value(), contains);
         return new CompletableResult(value);
     }
 
@@ -64,29 +66,29 @@ public class StringCondition extends ComparableCondition<String> implements IStr
 
     @Override
     public CompletableResult isContainedInSubstring(String stringContainer, String start, String end) {
-        String substring = StringUtils.substringBetween(stringContainer,start,end);
-        boolean value = StringUtils.contains(substring,this.term.value());
+        String substring = StringUtils.substringBetween(stringContainer, start, end);
+        boolean value = StringUtils.contains(substring, this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
     public CompletableResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end) {
-        String substring = StringUtils.substringBetween(stringContainer.toLowerCase(),start.toLowerCase(),end.toLowerCase());
-        boolean value = StringUtils.containsIgnoreCase(substring,this.term.value());
+        String substring = StringUtils.substringBetween(stringContainer.toLowerCase(), start.toLowerCase(), end.toLowerCase());
+        boolean value = StringUtils.containsIgnoreCase(substring, this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
     public CompletableResult isNotContainedInSubstring(String stringContainer, String start, String end) {
-        String substring = StringUtils.substringBetween(stringContainer,start,end);
-        boolean value = !StringUtils.contains(substring,this.term.value());
+        String substring = StringUtils.substringBetween(stringContainer, start, end);
+        boolean value = !StringUtils.contains(substring, this.term.value());
         return new CompletableResult(value);
     }
 
     @Override
     public CompletableResult isNotContainedInSubstringIgnoreCase(String stringContainer, String start, String end) {
-        String substring = StringUtils.substringBetween(stringContainer.toLowerCase(),start.toLowerCase(),end.toLowerCase());
-        boolean value = !StringUtils.containsIgnoreCase(substring,this.term.value());
+        String substring = StringUtils.substringBetween(stringContainer.toLowerCase(), start.toLowerCase(), end.toLowerCase());
+        boolean value = !StringUtils.containsIgnoreCase(substring, this.term.value());
         return new CompletableResult(value);
     }
 

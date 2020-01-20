@@ -9,7 +9,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithContainsThenReturnOne() {
-        Integer result = iFAnyOf("test","none","none").contains("est")
+        Integer result = iFAnyOf("test", "none", "none").contains("est")
                 .thenReturn(1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
@@ -17,7 +17,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithContainsThenReturnZero() {
-        Integer result = iFAnyOf("none","none","none").contains("est")
+        Integer result = iFAnyOf("none", "none", "none").contains("est")
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -26,7 +26,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithEqualsThenReturnOne() {
-        Integer result = iFAnyOf("test","none","none").isEqualTo("test")
+        Integer result = iFAnyOf("test", "none", "none").isEqualTo("test")
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -35,7 +35,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithEqualsThenReturnZero() {
-        Integer result = iFAnyOf("none","none","none").isEqualTo("test")
+        Integer result = iFAnyOf("none", "none", "none").isEqualTo("test")
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -44,7 +44,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithIsNullThenReturnOne() {
-        Integer result = iFAnyOf(null,"string","string").isNull()
+        Integer result = iFAnyOf(null, "string", "string").isNull()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();
@@ -53,7 +53,7 @@ public class AnyOfStringConditionalTest {
 
     @Test
     public void testAnyOfWithIsNullThenReturnZero() {
-        Integer result = iFAnyOf("string","string","string").isNull()
+        Integer result = iFAnyOf("string", "string", "string").isNull()
                 .thenReturn(1)
                 .orElseReturn(0)
                 .endIF();

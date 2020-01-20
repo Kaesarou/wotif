@@ -59,21 +59,21 @@ public class AnyOfBooleanConditionalTest {
 
     @Test
     public void ifVariableIsNotEqualToTrueThenReturnZero() {
-        Integer result = iFAnyOf(false,false,true).isDifferentFrom(false)
+        Integer result = iFAnyOf(false, false, true).isDifferentFrom(false)
                 .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void ifVariableIsNullThenReturnOne() {
-        Integer result = iFAnyOf(null,false,false).isNull()
+        Integer result = iFAnyOf(null, false, false).isNull()
                 .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void ifVariableIsNotNullThenReturnOne() {
-        Integer result = iFAnyOf(null,null,true).isNotNull()
+        Integer result = iFAnyOf(null, null, true).isNotNull()
                 .thenReturn(1).orElseReturn(0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
