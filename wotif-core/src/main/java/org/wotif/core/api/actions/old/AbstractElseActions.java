@@ -1,4 +1,4 @@
-package org.wotif.core.api.actions;
+package org.wotif.core.api.actions.old;
 
 import io.vavr.control.Either;
 import org.wotif.core.api.CallBack;

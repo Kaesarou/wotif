@@ -331,4 +331,12 @@ public class StringConditionTest {
         Assertions.assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    public void orElseTest() {
+        Integer result = iF("montest").isEqualTo("it")
+                .then(() -> 1).orElse(iF("mo").contains("test")).then(() -> 2)
+                .orElse(() -> 3).endIF();
+        Assertions.assertThat(result).isEqualTo(3);
+    }
+
 }
