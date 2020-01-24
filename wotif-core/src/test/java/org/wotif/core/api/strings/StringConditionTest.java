@@ -107,9 +107,7 @@ public class StringConditionTest {
     public void testIfVariableContainsThanExecuteMethod() {
         String variable = "string";
         AtomicReference<Boolean> result = new AtomicReference<>(false);
-        iF(variable).contains("ing").then(() -> {
-            result.set(true);
-        }).endIF();
+        iF(variable).contains("ing").then(() -> { result.set(true); }).endIF();
         Assertions.assertThat(result.get()).isTrue();
     }
 
@@ -117,13 +115,8 @@ public class StringConditionTest {
     public void testIfVariableContainsThanDoNotExecuteMethod() {
         String variable = "string";
         AtomicReference<Boolean> result = new AtomicReference<>(null);
-        Integer conditionResult = iF(variable).contains("none").then(() -> {
-            result.set(true);
-            return 1;
-        }).orElse(() -> {
-            result.set(false);
-            return 0;
-        }).endIF();
+        Integer conditionResult = iF(variable).contains("none").then(() -> { result.set(true); return 1; })
+                .orElse(() -> { result.set(false); return 0; }).endIF();
         Assertions.assertThat(result.get()).isFalse();
         Assertions.assertThat(conditionResult).isEqualTo(0);
     }
@@ -183,35 +176,40 @@ public class StringConditionTest {
     @Test
     public void testIfIsBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end")
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsBetweenThenReturnZero() {
         String variable = "none";
-        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end")
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsBetweenIgnoringCaseThenReturnOne() {
         String variable = "strIng";
-        Integer result = iF(variable).isContainedInSubstringIgnoreCase("startstringend", "START", "END").then(() -> 1).orElse(() -> 0).endIF();
+        Integer result = iF(variable).isContainedInSubstringIgnoreCase("startstringend", "START", "END")
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isNotContainedInSubstring("string", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstring("string", "start", "end")
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenIgnoringCaseThenReturnZero() {
         String variable = "strIng";
-        Integer result = iF(variable).isNotContainedInSubstringIgnoreCase("startstringend", "START", "END").then(() -> 1).orElse(() -> 0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstringIgnoreCase("startstringend", "START", "END")
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
