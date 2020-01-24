@@ -1,19 +1,19 @@
 package org.wotif.core.api.condition;
 
-import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.CompletableConditionResult;
 
 public interface ICondition<TYPE> {
 
-    CompletableResult isEqualTo(TYPE expected);
+    CompletableConditionResult isEqualTo(TYPE expected);
 
-    CompletableResult isDifferentFrom(TYPE expected);
+    CompletableConditionResult isDifferentFrom(TYPE expected);
 
-    CompletableResult isNull();
+    CompletableConditionResult isNull();
 
-    CompletableResult isNotNull();
+    CompletableConditionResult isNotNull();
 
-    CompletableResult isInstanceOf(Class<?> className);
+    CompletableConditionResult isInstanceOf(Class<?> className);
 
-    CompletableResult isNotInstanceOf(Class<?> className);
+    CompletableConditionResult isNotInstanceOf(Class<?> className);
 
 }

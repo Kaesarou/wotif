@@ -10,7 +10,7 @@ public class AllOfStringConditionTest {
     @Test
     public void testAllOfWithContainsThenReturnOne() {
         Integer result = iFAllOf("test", "test", "test").contains("est")
-                .thenReturn(1)
+                .then(() -> 1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
@@ -18,8 +18,8 @@ public class AllOfStringConditionTest {
     @Test
     public void testAllOfWithContainsThenReturnZero() {
         Integer result = iFAllOf("test", "test", "none").contains("est")
-                .thenReturn(1)
-                .orElseReturn(0)
+                .then(() -> 1)
+                .orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
@@ -27,8 +27,8 @@ public class AllOfStringConditionTest {
     @Test
     public void testAllOfWithEqualsThenReturnOne() {
         Integer result = iFAllOf("test", "test", "test").isEqualTo("test")
-                .thenReturn(1)
-                .orElseReturn(0)
+                .then(() -> 1)
+                .orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
@@ -36,8 +36,8 @@ public class AllOfStringConditionTest {
     @Test
     public void testAllOfWithEqualsThenReturnZero() {
         Integer result = iFAllOf("test", "test", "none").isEqualTo("test")
-                .thenReturn(1)
-                .orElseReturn(0)
+                .then(() -> 1)
+                .orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
@@ -46,8 +46,8 @@ public class AllOfStringConditionTest {
     public void testAllOfWithIsNullThenReturnOne() {
         String string = null;
         Integer result = iFAllOf(null, null, string).isNull()
-                .thenReturn(1)
-                .orElseReturn(0)
+                .then(() -> 1)
+                .orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
@@ -55,8 +55,8 @@ public class AllOfStringConditionTest {
     @Test
     public void testAllOfWithIsNullThenReturnZero() {
         Integer result = iFAllOf("test", null, null).isNull()
-                .thenReturn(1)
-                .orElseReturn(0)
+                .then(() -> 1)
+                .orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }

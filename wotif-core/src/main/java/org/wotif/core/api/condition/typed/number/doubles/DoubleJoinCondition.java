@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition.typed.number.doubles;
 
-import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.CompletableConditionResult;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.number.AbstractNumberJoinCondition;
 
@@ -17,12 +17,12 @@ public class DoubleJoinCondition extends AbstractNumberJoinCondition<Double, Dou
     }
 
     @Override
-    public CompletableResult isCloseTo(Integer expected) {
+    public CompletableConditionResult isCloseTo(Integer expected) {
         return this.functionToApply.apply(n -> n.isCloseTo(expected).value());
     }
 
     @Override
-    public CompletableResult isNotCloseTo(Integer expected) {
+    public CompletableConditionResult isNotCloseTo(Integer expected) {
         return this.functionToApply.apply(n -> n.isNotCloseTo(expected).value());
     }
 

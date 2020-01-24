@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition.typed.number;
 
-import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.CompletableConditionResult;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.ComparableJoinCondition;
 
@@ -16,22 +16,22 @@ public abstract class AbstractNumberJoinCondition<NUMBER extends Number & Compar
     protected abstract NUMBER_CONDITION getInstanceOfCondition(NUMBER term);
 
     @Override
-    public CompletableResult isZero() {
+    public CompletableConditionResult isZero() {
         return this.functionToApply.apply(n -> n.isZero().value());
     }
 
     @Override
-    public CompletableResult isDifferentFromZero() {
+    public CompletableConditionResult isDifferentFromZero() {
         return this.functionToApply.apply(n -> n.isDifferentFromZero().value());
     }
 
     @Override
-    public CompletableResult isPositive() {
+    public CompletableConditionResult isPositive() {
         return this.functionToApply.apply(n -> n.isPositive().value());
     }
 
     @Override
-    public CompletableResult isNegative() {
+    public CompletableConditionResult isNegative() {
         return this.functionToApply.apply(n -> n.isNegative().value());
     }
 

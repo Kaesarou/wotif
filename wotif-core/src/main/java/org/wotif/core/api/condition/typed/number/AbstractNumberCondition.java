@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition.typed.number;
 
-import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.CompletableConditionResult;
 import org.wotif.core.api.condition.typed.ComparableCondition;
 
 public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable<NUMBER>> extends ComparableCondition<NUMBER> implements INumberCondition<NUMBER> {
@@ -12,27 +12,27 @@ public abstract class AbstractNumberCondition<NUMBER extends Number & Comparable
     protected abstract NUMBER zero();
 
     @Override
-    public CompletableResult isZero() {
+    public CompletableConditionResult isZero() {
         int i = term.value().compareTo(zero());
-        return new CompletableResult(i == 0);
+        return new CompletableConditionResult(i == 0);
     }
 
     @Override
-    public CompletableResult isDifferentFromZero() {
+    public CompletableConditionResult isDifferentFromZero() {
         int i = term.value().compareTo(zero());
-        return new CompletableResult(i != 0);
+        return new CompletableConditionResult(i != 0);
     }
 
     @Override
-    public CompletableResult isPositive() {
+    public CompletableConditionResult isPositive() {
         int i = term.value().compareTo(zero());
-        return new CompletableResult(i >= 0);
+        return new CompletableConditionResult(i >= 0);
     }
 
     @Override
-    public CompletableResult isNegative() {
+    public CompletableConditionResult isNegative() {
         int i = term.value().compareTo(zero());
-        return new CompletableResult(i < 0);
+        return new CompletableConditionResult(i < 0);
     }
 
 }

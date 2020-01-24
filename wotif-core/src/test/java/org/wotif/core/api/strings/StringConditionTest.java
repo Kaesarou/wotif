@@ -13,14 +13,14 @@ public class StringConditionTest {
     @Test
     public void returnsOneWithoutExecutions() {
         String variableToTest = "string";
-        Integer result = iF(variableToTest).contains("ing").thenReturn(1).endIF();
+        Integer result = iF(variableToTest).contains("ing").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void returnNullWithoutExecutions() {
         String variableToTest = "string";
-        Integer result = iF(variableToTest).contains("none").thenReturn(1).endIF();
+        Integer result = iF(variableToTest).contains("none").then(() -> 1).endIF();
         Assertions.assertThat(result).isNull();
     }
 
@@ -28,8 +28,8 @@ public class StringConditionTest {
     public void orElseReturnZeroWithoutExecutions() {
         String variableToTest = "string";
         Integer result = iF(variableToTest).contains("none")
-                .thenReturn(1)
-                .orElseReturn(0).endIF();
+                .then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -37,8 +37,8 @@ public class StringConditionTest {
     public void orElseReturnOneWithoutExecutions() {
         String variableToTest = "string";
         Integer result = iF(variableToTest).contains("ing")
-                .thenReturn(1)
-                .orElseReturn(0).endIF();
+                .then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -46,7 +46,7 @@ public class StringConditionTest {
     public void ifVariableIsEqualToStringThenReturnOne() {
         String variableToTest = "string";
         Integer result = iF(variableToTest).isEqualTo("string")
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -54,7 +54,7 @@ public class StringConditionTest {
     public void ifVariableIsEqualToStringThenReturnZero() {
         String variableToTest = "string";
         Integer result = iF(variableToTest).isEqualTo("none")
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -62,7 +62,7 @@ public class StringConditionTest {
     public void ifVariableIsNullThenReturnOne() {
         String variableToTest = null;
         Integer result = iF(variableToTest).isNull()
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -70,7 +70,7 @@ public class StringConditionTest {
     public void ifVariableIsNotNullThenReturnOne() {
         String variableToTest = "string";
         Integer result = iF(variableToTest).isNotNull()
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -78,7 +78,7 @@ public class StringConditionTest {
     public void testTwoDifferentValuesWithIsEqualAndContainsThenReturnOne() {
         Integer result = iF("string").isEqualTo("string")
                 .and(iF("none").contains("on"))
-                .thenReturn(1)
+                .then(() -> 1)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
@@ -88,7 +88,7 @@ public class StringConditionTest {
         Integer result = iF("string").isEqualTo("string")
                 .and(iF("string").contains("none"))
                 .or(iFAllOf("string", "string").contains("ing"))
-                .thenReturn(1).orElseReturn(0)
+                .then(() -> 1).orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
@@ -98,7 +98,7 @@ public class StringConditionTest {
         Integer result = iF("string").isEqualTo("string")
                 .and(iF("string").contains("none"))
                 .or(iFAllOf("none", "string").contains("ing"))
-                .thenReturn(1).orElseReturn(0)
+                .then(() -> 1).orElse(() -> 0)
                 .endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
@@ -107,9 +107,9 @@ public class StringConditionTest {
     public void testIfVariableContainsThanExecuteMethod() {
         String variable = "string";
         AtomicReference<Boolean> result = new AtomicReference<>(false);
-        iF(variable).contains("ing").thenExecute(() -> {
+        iF(variable).contains("ing").then(() -> {
             result.set(true);
-        });
+        }).endIF();
         Assertions.assertThat(result.get()).isTrue();
     }
 
@@ -117,11 +117,13 @@ public class StringConditionTest {
     public void testIfVariableContainsThanDoNotExecuteMethod() {
         String variable = "string";
         AtomicReference<Boolean> result = new AtomicReference<>(null);
-        Integer conditionResult = iF(variable).contains("none").thenExecute(() -> {
+        Integer conditionResult = iF(variable).contains("none").then(() -> {
             result.set(true);
-        }).thenReturn(1).orElseExecute(() -> {
+            return 1;
+        }).orElse(() -> {
             result.set(false);
-        }).thenReturn(0).endIF();
+            return 0;
+        }).endIF();
         Assertions.assertThat(result.get()).isFalse();
         Assertions.assertThat(conditionResult).isEqualTo(0);
     }
@@ -129,21 +131,21 @@ public class StringConditionTest {
     @Test
     public void testIfVariableDoNotContainsThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).notContains("none").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).notContains("none").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfVariableIsEmptyThenReturnZero() {
         String variable = "string";
-        Integer result = iF(variable).isEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isEmpty().then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfVariableIsNotEmptyThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isNotEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotEmpty().then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
         Assertions.assertThat("r").isInstanceOf(String.class);
     }
@@ -152,7 +154,7 @@ public class StringConditionTest {
     public void testIfContainsIgnoringCaseThenReturnOne() {
         String variable = "string";
         Integer result = iF(variable).containsIgnoringCase("ING")
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -160,91 +162,91 @@ public class StringConditionTest {
     public void testIfContainsIgnoringCaseThenReturnZero() {
         String variable = "string";
         Integer result = iF(variable).containsIgnoringCase("none")
-                .thenReturn(1).orElseReturn(0).endIF();
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsEmptyThenReturnOne() {
         String variable = "";
-        Integer result = iF(variable).isEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isEmpty().then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotEmptyThenReturnZero() {
         String variable = "";
-        Integer result = iF(variable).isNotEmpty().thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotEmpty().then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsBetweenThenReturnZero() {
         String variable = "none";
-        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstring("startstringend", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsBetweenIgnoringCaseThenReturnOne() {
         String variable = "strIng";
-        Integer result = iF(variable).isContainedInSubstringIgnoreCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isContainedInSubstringIgnoreCase("startstringend", "START", "END").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenThenReturnOne() {
         String variable = "string";
-        Integer result = iF(variable).isNotContainedInSubstring("string", "start", "end").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstring("string", "start", "end").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBetweenIgnoringCaseThenReturnZero() {
         String variable = "strIng";
-        Integer result = iF(variable).isNotContainedInSubstringIgnoreCase("startstringend", "START", "END").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isNotContainedInSubstringIgnoreCase("startstringend", "START", "END").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsEqualIgnoringCaseThenReturnOne() {
         String variable = "strIng";
-        Integer result = iF(variable).isEqualToIgnoringCase("string").thenReturn(1).endIF();
+        Integer result = iF(variable).isEqualToIgnoringCase("string").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsDifferentFromThenReturnZero() {
         String variable = "strIng";
-        Integer result = iF(variable).isDifferentFromIgnoringCase("string").thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(variable).isDifferentFromIgnoringCase("string").then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsBlankThenReturnOne() {
         String value = "   ";
-        Integer result = iF(value).isBlank().thenReturn(1).endIF();
+        Integer result = iF(value).isBlank().then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotBlankThenReturnOne() {
         String value = "test";
-        Integer result = iF(value).isNotBlank().thenReturn(1).endIF();
+        Integer result = iF(value).isNotBlank().then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsInstanceOfThenReturnOne() {
         String value = "test";
-        Integer result = iF(value).isInstanceOf(String.class).thenReturn(1).endIF();
+        Integer result = iF(value).isInstanceOf(String.class).then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -252,91 +254,137 @@ public class StringConditionTest {
     public void testIfIsInstanceOfThenReturnZero() {
         String value = "test";
         Integer result = iF(value).isInstanceOf(Integer.class)
-                .thenReturn(1)
-                .orElseReturn(0).endIF();
+                .then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfIsNotInstanceOfThenReturnOne() {
         String value = "test";
-        Integer result = iF(value).isNotInstanceOf(Integer.class).thenReturn(1).endIF();
+        Integer result = iF(value).isNotInstanceOf(Integer.class).then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfIsNotInstanceOfThenReturnZero() {
         String value = "test";
-        Integer result = iF(value).isNotInstanceOf(String.class).thenReturn(1).orElseReturn(0).endIF();
+        Integer result = iF(value).isNotInstanceOf(String.class).then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfContainedInThenReturnOne() {
         String value = "test";
-        Integer result = iF(value).isContainedIn("abctestabc").thenReturn(1).endIF();
+        Integer result = iF(value).isContainedIn("abctestabc").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfContainedInThenReturnZero() {
         String value = "test";
-        Integer result = iF(value).isContainedIn("abcabc").thenReturn(1)
-                .orElseReturn(0).endIF();
+        Integer result = iF(value).isContainedIn("abcabc").then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfContainedInIgnoreCaseThenReturnOne() {
         String value = "TEST";
-        Integer result = iF(value).isContainedInIgnoreCase("abctestabc").thenReturn(1).endIF();
+        Integer result = iF(value).isContainedInIgnoreCase("abctestabc").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfContainedInIgnoreCaseThenReturnZero() {
         String value = "test";
-        Integer result = iF(value).isContainedInIgnoreCase("abcabc").thenReturn(1)
-                .orElseReturn(0).endIF();
+        Integer result = iF(value).isContainedInIgnoreCase("abcabc").then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfNotContainedInThenReturnOne() {
         String value = "test";
-        Integer result = iF(value).isNotContainedIn("abcabc").thenReturn(1).endIF();
+        Integer result = iF(value).isNotContainedIn("abcabc").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfNotContainedInThenReturnZero() {
         String value = "test";
-        Integer result = iF(value).isNotContainedIn("abctestabc").thenReturn(1)
-                .orElseReturn(0).endIF();
+        Integer result = iF(value).isNotContainedIn("abctestabc").then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void testIfNotContainedInIgnoreCaseThenReturnOne() {
         String value = "TEST";
-        Integer result = iF(value).isNotContainedInIgnoreCase("abcabc").thenReturn(1).endIF();
+        Integer result = iF(value).isNotContainedInIgnoreCase("abcabc").then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfNotContainedInIgnoreCaseThenReturnZero() {
         String value = "test";
-        Integer result = iF(value).isNotContainedInIgnoreCase("abcTESTabc").thenReturn(1)
-                .orElseReturn(0).endIF();
+        Integer result = iF(value).isNotContainedInIgnoreCase("abcTESTabc").then(() -> 1)
+                .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
     }
 
     @Test
-    public void orElseTest() {
-        Integer result = iF("montest").isEqualTo("it")
-                .then(() -> 1).orElse(iF("mo").contains("test")).then(() -> 2)
+    public void testOrElseTestWithExpectedReturn1() {
+        Integer result = iF("montest").isEqualTo("montest")
+                .then(() -> 1).orElse(iF("mo").contains("o"), () -> 2)
+                .orElse(() -> 3).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void testOrElseTestWithExpectedReturn2() {
+        Integer result = iF("montest").isEqualTo("test")
+                .then(() -> 1).orElse(iF("mo").contains("o"), () -> 2)
+                .orElse(() -> 3).endIF();
+        Assertions.assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    public void testOrElseTestWithExpectedReturn3() {
+        Integer result = iF("montest").isEqualTo("test")
+                .then(() -> 1).orElse(iF("mo").contains("ing"), () -> 2)
                 .orElse(() -> 3).endIF();
         Assertions.assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void testOrElseWithCallbackThenReturn1() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF("monTest").contains("ing").then(() -> result.set(1))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("A").isEmpty()), () -> result.set(2))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("A").isNotEmpty()), () -> result.set(3))
+                .endIF();
+        Assertions.assertThat(result.get()).isEqualTo(3);
+    }
+
+    @Test
+    public void testOrElseWithCallbackThenReturn0() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF("monTest").contains("ing").then(() -> result.set(1))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("A").isEmpty()), () -> result.set(2))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("").isNotEmpty()), () -> result.set(3))
+                .endIF();
+        Assertions.assertThat(result.get()).isEqualTo(0);
+    }
+
+    @Test
+    public void testOrElseWithCallbackThenReturn2() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF("monTest").contains("ing").then(() -> result.set(1))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("").isEmpty()), () -> result.set(2))
+                .orElse(iF("monTest").isEqualTo("monTest").and(iF("").isNotEmpty()), () -> result.set(3))
+                .endIF();
+        Assertions.assertThat(result.get()).isEqualTo(2);
     }
 
 }

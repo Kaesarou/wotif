@@ -1,42 +1,42 @@
 package org.wotif.core.api.condition.typed.string;
 
-import org.wotif.core.api.CompletableResult;
+import org.wotif.core.api.CompletableConditionResult;
 import org.wotif.core.api.condition.typed.IComparableCondition;
 
 public interface IStringCondition extends IComparableCondition<String> {
 
-    CompletableResult contains(String contains);
+    CompletableConditionResult contains(String contains);
 
-    CompletableResult containsIgnoringCase(String contains);
+    CompletableConditionResult containsIgnoringCase(String contains);
 
-    CompletableResult notContains(String notContains);
+    CompletableConditionResult notContains(String notContains);
 
-    CompletableResult isEmpty();
+    CompletableConditionResult isEmpty();
 
-    CompletableResult isNotEmpty();
+    CompletableConditionResult isNotEmpty();
 
-    CompletableResult isContainedIn(String stringContainer);
+    CompletableConditionResult isContainedIn(String stringContainer);
 
-    CompletableResult isNotContainedIn(String stringContainer);
+    CompletableConditionResult isNotContainedIn(String stringContainer);
 
-    CompletableResult isContainedInIgnoreCase(String stringContainer);
+    CompletableConditionResult isContainedInIgnoreCase(String stringContainer);
 
-    CompletableResult isNotContainedInIgnoreCase(String stringContainer);
+    CompletableConditionResult isNotContainedInIgnoreCase(String stringContainer);
 
-    CompletableResult isContainedInSubstring(String stringContainer, String start, String end);
+    CompletableConditionResult isContainedInSubstring(String stringContainer, String start, String end);
 
-    CompletableResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end);
+    CompletableConditionResult isContainedInSubstringIgnoreCase(String stringContainer, String start, String end);
 
-    CompletableResult isNotContainedInSubstring(String stringContainer, String start, String end);
+    CompletableConditionResult isNotContainedInSubstring(String stringContainer, String start, String end);
 
-    CompletableResult isNotContainedInSubstringIgnoreCase(String stringContainer, String start, String end);
+    CompletableConditionResult isNotContainedInSubstringIgnoreCase(String stringContainer, String start, String end);
 
-    CompletableResult isEqualToIgnoringCase(String string);
+    CompletableConditionResult isEqualToIgnoringCase(String string);
 
-    CompletableResult isDifferentFromIgnoringCase(String string);
+    CompletableConditionResult isDifferentFromIgnoringCase(String string);
 
-    CompletableResult isBlank();
+    CompletableConditionResult isBlank();
 
-    CompletableResult isNotBlank();
+    CompletableConditionResult isNotBlank();
 
 }
