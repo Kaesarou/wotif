@@ -3,6 +3,8 @@ package org.wotif.core.api.numbers;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 import static org.wotif.core.api.Conditions.iF;
 
 
@@ -156,6 +158,34 @@ public class NumberConditionTest {
         Integer result = iF(3.6).isNotCloseTo(4).then(() -> 1)
                 .orElse(() -> 0).endIF();
         Assertions.assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfFloatIsNaNExpectedResult1() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF(2.0 % 0).isNaN().then(() -> result.set(1)).endIF();
+        Assertions.assertThat(result.get()).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfFloatIsInfinitePositiveExpectedResult1() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF(Float.POSITIVE_INFINITY).isInfinite().then(() -> result.set(1)).endIF();
+        Assertions.assertThat(result.get()).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfFloatIsInfiniteNegativeExpectedResult1() {
+        AtomicReference<Integer> result = new AtomicReference<>(0);
+        iF(Float.NEGATIVE_INFINITY).isInfinite().then(() -> result.set(1)).endIF();
+        Assertions.assertThat(result.get()).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfFloatIsInfiniteExpectedResultNull() {
+        AtomicReference<Integer> result = new AtomicReference<>(null);
+        iF(Float.POSITIVE_INFINITY).isFinite().then(() -> result.set(1)).endIF();
+        Assertions.assertThat(result.get()).isNull();
     }
 
 }

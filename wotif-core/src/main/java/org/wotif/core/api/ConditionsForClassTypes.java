@@ -3,8 +3,10 @@ package org.wotif.core.api;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
-import org.wotif.core.api.condition.typed.number.doubles.DoubleCondition;
-import org.wotif.core.api.condition.typed.number.doubles.DoubleJoinCondition;
+import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
+import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleJoinCondition;
+import org.wotif.core.api.condition.typed.number.floating.floats.FloatCondition;
+import org.wotif.core.api.condition.typed.number.floating.floats.FloatJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
@@ -32,5 +34,11 @@ public class ConditionsForClassTypes {
     public static DoubleJoinCondition iFAnyOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.ANYOF, terms); }
     public static DoubleJoinCondition iFAllOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.ALLOF, terms); }
     public static DoubleJoinCondition iFNoneOf(Double... terms) { return new DoubleJoinCondition(JoinEnum.NONEOF, terms); }
+
+    //Float
+    public static FloatCondition iF(Float term) { return new FloatCondition(term); }
+    public static FloatJoinCondition iFAnyOf(Float... terms) { return new FloatJoinCondition(JoinEnum.ANYOF, terms); }
+    public static FloatJoinCondition iFAllOf(Float... terms) { return new FloatJoinCondition(JoinEnum.ALLOF, terms); }
+    public static FloatJoinCondition iFNoneOf(Float... terms) { return new FloatJoinCondition(JoinEnum.NONEOF, terms); }
 
 }
