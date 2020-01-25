@@ -3,12 +3,16 @@ package org.wotif.core.api;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
+import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
+import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.floats.FloatCondition;
 import org.wotif.core.api.condition.typed.number.floating.floats.FloatJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
+import org.wotif.core.api.condition.typed.number.longs.LongCondition;
+import org.wotif.core.api.condition.typed.number.longs.LongJoinCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
@@ -46,5 +50,15 @@ public class ConditionsForClassTypes {
     public static ShortJoinCondition iFAnyOf(Short... terms) { return new ShortJoinCondition(JoinEnum.ANYOF, terms); }
     public static ShortJoinCondition iFAllOf(Short... terms) { return new ShortJoinCondition(JoinEnum.ALLOF, terms); }
     public static ShortJoinCondition iFNoneOf(Short... terms) { return new ShortJoinCondition(JoinEnum.NONEOF, terms); }
+    //Byte
+    public static ByteCondition iF(Byte term) { return new ByteCondition(term); }
+    public static ByteJoinCondition iFAnyOf(Byte... terms) { return new ByteJoinCondition(JoinEnum.ANYOF, terms); }
+    public static ByteJoinCondition iFAllOf(Byte... terms) { return new ByteJoinCondition(JoinEnum.ALLOF, terms); }
+    public static ByteJoinCondition iFNoneOf(Byte... terms) { return new ByteJoinCondition(JoinEnum.NONEOF, terms); }
+    //Long
+    public static LongCondition iF(Long term) { return new LongCondition(term); }
+    public static LongJoinCondition iFAnyOf(Long... terms) { return new LongJoinCondition(JoinEnum.ANYOF, terms); }
+    public static LongJoinCondition iFAllOf(Long... terms) { return new LongJoinCondition(JoinEnum.ALLOF, terms); }
+    public static LongJoinCondition iFNoneOf(Long... terms) { return new LongJoinCondition(JoinEnum.NONEOF, terms); }
 
 }
