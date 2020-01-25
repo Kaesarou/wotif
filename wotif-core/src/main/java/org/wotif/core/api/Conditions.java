@@ -8,6 +8,8 @@ import org.wotif.core.api.condition.typed.number.floating.floats.FloatCondition;
 import org.wotif.core.api.condition.typed.number.floating.floats.FloatJoinCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerCondition;
 import org.wotif.core.api.condition.typed.number.integer.IntegerJoinCondition;
+import org.wotif.core.api.condition.typed.number.shorts.ShortCondition;
+import org.wotif.core.api.condition.typed.number.shorts.ShortJoinCondition;
 import org.wotif.core.api.condition.typed.string.StringCondition;
 import org.wotif.core.api.condition.typed.string.StringJoinCondition;
 
@@ -40,6 +42,11 @@ public class Conditions {
     public static FloatJoinCondition iFAnyOf(Float... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
     public static FloatJoinCondition iFAllOf(Float... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
     public static FloatJoinCondition iFNoneOf(Float... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    //Short
+    public static ShortCondition iF(Short term) { return ConditionsForInterfaceTypes.iF(term); }
+    public static ShortJoinCondition iFAnyOf(Short... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
+    public static ShortJoinCondition iFAllOf(Short... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
+    public static ShortJoinCondition iFNoneOf(Short... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
 
 }
 
