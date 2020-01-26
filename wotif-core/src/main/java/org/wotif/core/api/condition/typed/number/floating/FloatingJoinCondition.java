@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition.typed.number.floating;
 
-import org.wotif.core.api.CompletableConditionResult;
+import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.number.AbstractNumberJoinCondition;
 
@@ -14,32 +14,32 @@ public abstract class FloatingJoinCondition<FLOATING extends Number & Comparable
     }
     
     @Override
-    public CompletableConditionResult isCloseTo(Integer expected) {
+    public CompletableResult isCloseTo(Integer expected) {
         return this.functionToApply.apply(n -> n.isCloseTo(expected).value());
     }
 
     @Override
-    public CompletableConditionResult isNotCloseTo(Integer expected) {
+    public CompletableResult isNotCloseTo(Integer expected) {
         return this.functionToApply.apply(n -> n.isNotCloseTo(expected).value());
     }
 
     @Override
-    public CompletableConditionResult isNumber() {
+    public CompletableResult isNumber() {
         return this.functionToApply.apply(n -> n.isNumber().value());
     }
 
     @Override
-    public CompletableConditionResult isNaN() {
+    public CompletableResult isNaN() {
         return this.functionToApply.apply(n -> n.isNaN().value());
     }
 
     @Override
-    public CompletableConditionResult isInfinite() {
+    public CompletableResult isInfinite() {
         return this.functionToApply.apply(n -> n.isInfinite().value());
     }
 
     @Override
-    public CompletableConditionResult isFinite() {
+    public CompletableResult isFinite() {
         return this.functionToApply.apply(n -> n.isFinite().value());
     }
 

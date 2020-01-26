@@ -1,6 +1,6 @@
 package org.wotif.core.api.condition;
 
-import org.wotif.core.api.CompletableConditionResult;
+import org.wotif.core.api.CompletableResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCond
 
     protected List<CONDITION> conditions;
 
-    protected Function<Predicate<? super CONDITION>, CompletableConditionResult> functionToApply;
+    protected Function<Predicate<? super CONDITION>, CompletableResult> functionToApply;
 
     @SafeVarargs
     protected AbstractJoinCondition(JoinEnum joinType, TYPE... terms) {
@@ -27,48 +27,48 @@ public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCond
 
     protected abstract CONDITION getInstanceOfCondition(TYPE term);
 
-    private CompletableConditionResult allOf(Predicate<? super CONDITION> method) {
+    private CompletableResult allOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().allMatch(method);
-        return new CompletableConditionResult(value);
+        return new CompletableResult(value);
     }
 
-    private CompletableConditionResult anyOf(Predicate<? super CONDITION> method) {
+    private CompletableResult anyOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().anyMatch(method);
-        return new CompletableConditionResult(value);
+        return new CompletableResult(value);
     }
 
-    private CompletableConditionResult noneOf(Predicate<? super CONDITION> method) {
+    private CompletableResult noneOf(Predicate<? super CONDITION> method) {
         boolean value = conditions.stream().noneMatch(method);
-        return new CompletableConditionResult(value);
+        return new CompletableResult(value);
     }
 
     @Override
-    public CompletableConditionResult isEqualTo(TYPE expected) {
+    public CompletableResult isEqualTo(TYPE expected) {
         return this.functionToApply.apply(b -> b.isEqualTo(expected).value());
     }
 
     @Override
-    public CompletableConditionResult isDifferentFrom(TYPE expected) {
+    public CompletableResult isDifferentFrom(TYPE expected) {
         return this.functionToApply.apply(b -> b.isDifferentFrom(expected).value());
     }
 
     @Override
-    public CompletableConditionResult isNull() {
+    public CompletableResult isNull() {
         return this.functionToApply.apply(b -> b.isNull().value());
     }
 
     @Override
-    public CompletableConditionResult isNotNull() {
+    public CompletableResult isNotNull() {
         return this.functionToApply.apply(b -> b.isNotNull().value());
     }
 
     @Override
-    public CompletableConditionResult isInstanceOf(Class<?> className) {
+    public CompletableResult isInstanceOf(Class<?> className) {
         return this.functionToApply.apply(b -> b.isInstanceOf(className).value());
     }
 
     @Override
-    public CompletableConditionResult isNotInstanceOf(Class<?> className) {
+    public CompletableResult isNotInstanceOf(Class<?> className) {
         return this.functionToApply.apply(b -> b.isNotInstanceOf(className).value());
     }
 

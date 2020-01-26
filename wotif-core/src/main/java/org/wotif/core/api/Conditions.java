@@ -2,6 +2,8 @@ package org.wotif.core.api;
 
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
+import org.wotif.core.api.condition.typed.character.CharacterCondition;
+import org.wotif.core.api.condition.typed.character.CharacterJoinCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
@@ -61,6 +63,11 @@ public class Conditions {
     public static LongJoinCondition iFAnyOf(Long... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
     public static LongJoinCondition iFAllOf(Long... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
     public static LongJoinCondition iFNoneOf(Long... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    //Character
+    public static CharacterCondition iF(Character term) { return ConditionsForInterfaceTypes.iF(term); }
+    public static CharacterJoinCondition iFAnyOf(Character... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
+    public static CharacterJoinCondition iFAllOf(Character... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
+    public static CharacterJoinCondition iFNoneOf(Character... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
 
 }
 

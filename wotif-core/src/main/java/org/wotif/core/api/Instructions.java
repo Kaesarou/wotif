@@ -6,22 +6,22 @@ import java.util.function.Supplier;
 
 public class Instructions<RETURN> {
 
-    private ConditionResult conditionResult;
+    private Result result;
 
     private Either<Supplier<RETURN>, CallBack> action;
 
-    public Instructions(ConditionResult conditionResult, Supplier<RETURN> supplier) {
-        this.conditionResult = conditionResult;
+    public Instructions(Result result, Supplier<RETURN> supplier) {
+        this.result = result;
         this.action = Either.left(supplier);
     }
 
-    public Instructions(ConditionResult conditionResult, CallBack callBack) {
-        this.conditionResult = conditionResult;
+    public Instructions(Result result, CallBack callBack) {
+        this.result = result;
         this.action = Either.right(callBack);
     }
 
-    public ConditionResult result() {
-        return this.conditionResult;
+    public Result result() {
+        return this.result;
     }
 
     public RETURN executeAction() {

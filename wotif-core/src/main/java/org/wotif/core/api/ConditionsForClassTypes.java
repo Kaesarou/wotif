@@ -3,6 +3,8 @@ package org.wotif.core.api;
 import org.wotif.core.api.condition.JoinEnum;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
+import org.wotif.core.api.condition.typed.character.CharacterCondition;
+import org.wotif.core.api.condition.typed.character.CharacterJoinCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
@@ -60,5 +62,10 @@ public class ConditionsForClassTypes {
     public static LongJoinCondition iFAnyOf(Long... terms) { return new LongJoinCondition(JoinEnum.ANYOF, terms); }
     public static LongJoinCondition iFAllOf(Long... terms) { return new LongJoinCondition(JoinEnum.ALLOF, terms); }
     public static LongJoinCondition iFNoneOf(Long... terms) { return new LongJoinCondition(JoinEnum.NONEOF, terms); }
+    //Character
+    public static CharacterCondition iF(Character term) { return new CharacterCondition(term); }
+    public static CharacterJoinCondition iFAnyOf(Character... terms) { return new CharacterJoinCondition(JoinEnum.ANYOF, terms); }
+    public static CharacterJoinCondition iFAllOf(Character... terms) { return new CharacterJoinCondition(JoinEnum.ALLOF, terms); }
+    public static CharacterJoinCondition iFNoneOf(Character... terms) { return new CharacterJoinCondition(JoinEnum.NONEOF, terms); }
 
 }

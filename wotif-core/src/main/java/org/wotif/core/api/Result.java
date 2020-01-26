@@ -2,7 +2,7 @@ package org.wotif.core.api;
 
 import java.util.function.Supplier;
 
-public class ConditionResult {
+public class Result {
 
     private boolean value;
 
@@ -10,7 +10,7 @@ public class ConditionResult {
         return this.value;
     }
 
-    public ConditionResult(boolean value) {
+    public Result(boolean value) {
         this.value = value;
     }
 
