@@ -3,6 +3,9 @@ package org.wotif.core.api.character;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.wotif.core.api.Conditions.iF;
 
 public class CharacterConditionTest {

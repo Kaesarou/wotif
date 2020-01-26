@@ -17,21 +17,14 @@ import org.wotif.core.api.condition.typed.number.longs.LongCondition;
 import org.wotif.core.api.condition.typed.number.longs.LongJoinCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortJoinCondition;
-import org.wotif.core.api.condition.typed.string.StringCondition;
-import org.wotif.core.api.condition.typed.string.StringJoinCondition;
 
-public class ConditionsForClassTypes {
+public class ConditionsForPrimitiveTypes {
 
     //Boolean
     public static BooleanCondition iF(Boolean term) { return new BooleanCondition(term); }
     public static BooleanJoinCondition iFAnyOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.ANYOF, terms); }
     public static BooleanJoinCondition iFAllOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.ALLOF, terms); }
     public static BooleanJoinCondition iFNoneOf(Boolean... terms) { return new BooleanJoinCondition(JoinEnum.NONEOF, terms); }
-    //String
-    public static StringCondition iF(String term) { return new StringCondition(term); }
-    public static StringJoinCondition iFAnyOf(String... terms) { return new StringJoinCondition(JoinEnum.ANYOF, terms); }
-    public static StringJoinCondition iFAllOf(String... terms) { return new StringJoinCondition(JoinEnum.ALLOF, terms); }
-    public static StringJoinCondition iFNoneOf(String... terms) { return new StringJoinCondition(JoinEnum.NONEOF, terms); }
     //Integer
     public static IntegerCondition iF(Integer term) { return new IntegerCondition(term); }
     public static IntegerJoinCondition iFAnyOf(Integer... terms) { return new IntegerJoinCondition(JoinEnum.ANYOF, terms); }

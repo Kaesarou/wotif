@@ -1,5 +1,7 @@
 package org.wotif.core.api;
 
+import org.wotif.core.api.condition.typed.arrays.ArraysCondition;
+import org.wotif.core.api.condition.typed.arrays.ArraysJoinCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
 import org.wotif.core.api.condition.typed.character.CharacterCondition;
@@ -24,50 +26,58 @@ public class Conditions {
     private Conditions() {}
 
     //Boolean
-    public static BooleanCondition iF(Boolean term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static BooleanJoinCondition iFAnyOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static BooleanJoinCondition iFAllOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static BooleanJoinCondition iFNoneOf(Boolean... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static BooleanCondition iF(Boolean term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static BooleanJoinCondition iFAnyOf(Boolean... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static BooleanJoinCondition iFAllOf(Boolean... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static BooleanJoinCondition iFNoneOf(Boolean... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //String
-    public static StringCondition iF(String term) {return ConditionsForInterfaceTypes.iF(term); }
-    public static StringJoinCondition iFAnyOf(String... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static StringJoinCondition iFAllOf(String... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static StringJoinCondition iFNoneOf(String... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static StringCondition iF(String term) {return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static StringJoinCondition iFAnyOf(String... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static StringJoinCondition iFAllOf(String... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static StringJoinCondition iFNoneOf(String... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Integer
-    public static IntegerCondition iF(Integer term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static IntegerJoinCondition iFAnyOf(Integer... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static IntegerJoinCondition iFAllOf(Integer... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static IntegerJoinCondition iFNoneOf(Integer... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static IntegerCondition iF(Integer term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static IntegerJoinCondition iFAnyOf(Integer... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static IntegerJoinCondition iFAllOf(Integer... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static IntegerJoinCondition iFNoneOf(Integer... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Double
-    public static DoubleCondition iF(Double term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static DoubleJoinCondition iFAnyOf(Double... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static DoubleJoinCondition iFAllOf(Double... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static DoubleJoinCondition iFNoneOf(Double... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static DoubleCondition iF(Double term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static DoubleJoinCondition iFAnyOf(Double... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static DoubleJoinCondition iFAllOf(Double... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static DoubleJoinCondition iFNoneOf(Double... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Double
-    public static FloatCondition iF(Float term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static FloatJoinCondition iFAnyOf(Float... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static FloatJoinCondition iFAllOf(Float... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static FloatJoinCondition iFNoneOf(Float... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static FloatCondition iF(Float term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static FloatJoinCondition iFAnyOf(Float... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static FloatJoinCondition iFAllOf(Float... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static FloatJoinCondition iFNoneOf(Float... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Short
-    public static ShortCondition iF(Short term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static ShortJoinCondition iFAnyOf(Short... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static ShortJoinCondition iFAllOf(Short... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static ShortJoinCondition iFNoneOf(Short... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static ShortCondition iF(Short term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static ShortJoinCondition iFAnyOf(Short... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static ShortJoinCondition iFAllOf(Short... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static ShortJoinCondition iFNoneOf(Short... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Byte
-    public static ByteCondition iF(Byte term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static ByteJoinCondition iFAnyOf(Byte... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static ByteJoinCondition iFAllOf(Byte... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static ByteJoinCondition iFNoneOf(Byte... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static ByteCondition iF(Byte term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static ByteJoinCondition iFAnyOf(Byte... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static ByteJoinCondition iFAllOf(Byte... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static ByteJoinCondition iFNoneOf(Byte... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Long
-    public static LongCondition iF(Long term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static LongJoinCondition iFAnyOf(Long... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static LongJoinCondition iFAllOf(Long... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static LongJoinCondition iFNoneOf(Long... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static LongCondition iF(Long term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static LongJoinCondition iFAnyOf(Long... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static LongJoinCondition iFAllOf(Long... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static LongJoinCondition iFNoneOf(Long... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Character
-    public static CharacterCondition iF(Character term) { return ConditionsForInterfaceTypes.iF(term); }
-    public static CharacterJoinCondition iFAnyOf(Character... terms) { return ConditionsForInterfaceTypes.iFAnyOf(terms); }
-    public static CharacterJoinCondition iFAllOf(Character... terms) { return ConditionsForInterfaceTypes.iFAllOf(terms); }
-    public static CharacterJoinCondition iFNoneOf(Character... terms) { return ConditionsForInterfaceTypes.iFNoneOf(terms); }
+    public static CharacterCondition iF(Character term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static CharacterJoinCondition iFAnyOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static CharacterJoinCondition iFAllOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static CharacterJoinCondition iFNoneOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays
+    public static <T>ArraysCondition<T> iF(T[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    @SafeVarargs
+    public static <T>ArraysJoinCondition<T> iFAnyOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    @SafeVarargs
+    public static <T>ArraysJoinCondition<T> iFAllOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    @SafeVarargs
+    public static <T>ArraysJoinCondition<T> iFNoneOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
 
 }
 
