@@ -6,13 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCondition<TYPE>> implements ICondition<TYPE> {
 
     protected List<CONDITION> conditions;
 
-    protected Function<Predicate<? super CONDITION>, CompletableResult> functionToApply;
+    protected Function<Function<? super CONDITION, CompletableResult>, CompletableResult> functionToApply;
 
     @SafeVarargs
     protected AbstractJoinCondition(JoinEnum joinType, TYPE... terms) {
@@ -27,49 +28,49 @@ public abstract class AbstractJoinCondition<TYPE, CONDITION extends AbstractCond
 
     protected abstract CONDITION getInstanceOfCondition(TYPE term);
 
-    private CompletableResult allOf(Predicate<? super CONDITION> method) {
-        boolean value = conditions.stream().allMatch(method);
+    private CompletableResult allOf(Function<? super CONDITION, CompletableResult> method) {
+        boolean value = conditions.stream().allMatch((c) -> method.apply(c).value());
         return new CompletableResult(value);
     }
 
-    private CompletableResult anyOf(Predicate<? super CONDITION> method) {
-        boolean value = conditions.stream().anyMatch(method);
+    private CompletableResult anyOf(Function<? super CONDITION, CompletableResult> method) {
+        boolean value = conditions.stream().anyMatch((c) -> method.apply(c).value());
         return new CompletableResult(value);
     }
 
-    private CompletableResult noneOf(Predicate<? super CONDITION> method) {
-        boolean value = conditions.stream().noneMatch(method);
+    private CompletableResult noneOf(Function<? super CONDITION, CompletableResult> method) {
+        boolean value = conditions.stream().noneMatch((c) -> method.apply(c).value());
         return new CompletableResult(value);
     }
 
     @Override
     public CompletableResult isEqualTo(TYPE expected) {
-        return this.functionToApply.apply(b -> b.isEqualTo(expected).value());
+        return this.functionToApply.apply(b -> b.isEqualTo(expected));
     }
 
     @Override
     public CompletableResult isDifferentFrom(TYPE expected) {
-        return this.functionToApply.apply(b -> b.isDifferentFrom(expected).value());
+        return this.functionToApply.apply(b -> b.isDifferentFrom(expected));
     }
 
     @Override
     public CompletableResult isNull() {
-        return this.functionToApply.apply(b -> b.isNull().value());
+        return this.functionToApply.apply(AbstractCondition::isNull);
     }
 
     @Override
     public CompletableResult isNotNull() {
-        return this.functionToApply.apply(b -> b.isNotNull().value());
+        return this.functionToApply.apply(AbstractCondition::isNotNull);
     }
 
     @Override
     public CompletableResult isInstanceOf(Class<?> className) {
-        return this.functionToApply.apply(b -> b.isInstanceOf(className).value());
+        return this.functionToApply.apply(b -> b.isInstanceOf(className));
     }
 
     @Override
     public CompletableResult isNotInstanceOf(Class<?> className) {
-        return this.functionToApply.apply(b -> b.isNotInstanceOf(className).value());
+        return this.functionToApply.apply(b -> b.isNotInstanceOf(className));
     }
 
 }

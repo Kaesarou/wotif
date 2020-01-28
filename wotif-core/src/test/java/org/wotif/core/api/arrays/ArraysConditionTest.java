@@ -14,4 +14,11 @@ public class ArraysConditionTest {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    public void testIfArrayNotContainsThenReturn1() {
+        Character[] arrayToTest = {'a', 'b', 'c'};
+        Integer result = iF(arrayToTest).notContains('d').then(() -> 1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
 }

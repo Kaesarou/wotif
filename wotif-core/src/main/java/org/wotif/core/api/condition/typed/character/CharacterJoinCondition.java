@@ -19,12 +19,12 @@ public class CharacterJoinCondition
 
     @Override
     public CompletableResult isUpperCase() {
-        return this.functionToApply.apply(c -> c.isUpperCase().value());
+        return this.functionToApply.apply(CharacterCondition::isUpperCase);
     }
 
     @Override
     public CompletableResult isLowerCase() {
-        return this.functionToApply.apply(c -> c.isLowerCase().value());
+        return this.functionToApply.apply(CharacterCondition::isLowerCase);
     }
 
 }

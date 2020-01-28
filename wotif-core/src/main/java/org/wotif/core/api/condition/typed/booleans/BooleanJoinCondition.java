@@ -17,12 +17,12 @@ public class BooleanJoinCondition extends AbstractJoinCondition<Boolean, Boolean
 
     @Override
     public CompletableResult isTrue() {
-        return this.functionToApply.apply(b -> b.isTrue().value());
+        return this.functionToApply.apply(BooleanCondition::isTrue);
     }
 
     @Override
     public CompletableResult isFalse() {
-        return this.functionToApply.apply(b -> b.isFalse().value());
+        return this.functionToApply.apply(BooleanCondition::isFalse);
     }
 
 }

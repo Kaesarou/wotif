@@ -15,32 +15,32 @@ public abstract class FloatingJoinCondition<FLOATING extends Number & Comparable
     
     @Override
     public CompletableResult isCloseTo(Integer expected) {
-        return this.functionToApply.apply(n -> n.isCloseTo(expected).value());
+        return this.functionToApply.apply(n -> n.isCloseTo(expected));
     }
 
     @Override
     public CompletableResult isNotCloseTo(Integer expected) {
-        return this.functionToApply.apply(n -> n.isNotCloseTo(expected).value());
+        return this.functionToApply.apply(n -> n.isNotCloseTo(expected));
     }
 
     @Override
     public CompletableResult isNumber() {
-        return this.functionToApply.apply(n -> n.isNumber().value());
+        return this.functionToApply.apply(IFloatingCondition::isNumber);
     }
 
     @Override
     public CompletableResult isNaN() {
-        return this.functionToApply.apply(n -> n.isNaN().value());
+        return this.functionToApply.apply(IFloatingCondition::isNaN);
     }
 
     @Override
     public CompletableResult isInfinite() {
-        return this.functionToApply.apply(n -> n.isInfinite().value());
+        return this.functionToApply.apply(IFloatingCondition::isInfinite);
     }
 
     @Override
     public CompletableResult isFinite() {
-        return this.functionToApply.apply(n -> n.isFinite().value());
+        return this.functionToApply.apply(IFloatingCondition::isFinite);
     }
 
 }

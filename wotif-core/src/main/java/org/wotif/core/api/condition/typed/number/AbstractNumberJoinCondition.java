@@ -17,22 +17,22 @@ public abstract class AbstractNumberJoinCondition<NUMBER extends Number & Compar
 
     @Override
     public CompletableResult isZero() {
-        return this.functionToApply.apply(n -> n.isZero().value());
+        return this.functionToApply.apply(AbstractNumberCondition::isZero);
     }
 
     @Override
     public CompletableResult isDifferentFromZero() {
-        return this.functionToApply.apply(n -> n.isDifferentFromZero().value());
+        return this.functionToApply.apply(AbstractNumberCondition::isDifferentFromZero);
     }
 
     @Override
     public CompletableResult isPositive() {
-        return this.functionToApply.apply(n -> n.isPositive().value());
+        return this.functionToApply.apply(AbstractNumberCondition::isPositive);
     }
 
     @Override
     public CompletableResult isNegative() {
-        return this.functionToApply.apply(n -> n.isNegative().value());
+        return this.functionToApply.apply(AbstractNumberCondition::isNegative);
     }
 
 }
