@@ -13,7 +13,7 @@ public class ConditionsForNonPrimitiveTypes extends ConditionsForPrimitiveTypes 
     public static StringJoinCondition iFAnyOf(String... terms) { return new StringJoinCondition(JoinEnum.ANYOF, terms); }
     public static StringJoinCondition iFAllOf(String... terms) { return new StringJoinCondition(JoinEnum.ALLOF, terms); }
     public static StringJoinCondition iFNoneOf(String... terms) { return new StringJoinCondition(JoinEnum.NONEOF, terms); }
-    //String
+    //Arrays
     public static <T>ArraysCondition<T> iF(T[] term) { return new ArraysCondition<>(term); }
     @SafeVarargs
     public static <T>ArraysJoinCondition<T> iFAnyOf(T[]... terms) { return new ArraysJoinCondition<>(JoinEnum.ANYOF, terms); }

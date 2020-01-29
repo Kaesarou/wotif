@@ -3,7 +3,6 @@ package org.wotif.core.api.condition.typed.arrays;
 import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.condition.ICondition;
 
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -13,37 +12,29 @@ public interface IArraysCondition<ELEMENT_TYPE> extends ICondition<ELEMENT_TYPE[
 
     CompletableResult notContains(ELEMENT_TYPE... values);
 
-    CompletableResult contains(List<ELEMENT_TYPE> values);
+    CompletableResult contains(Iterable<ELEMENT_TYPE> values);
 
-    CompletableResult notContains(List<ELEMENT_TYPE> values);
+    CompletableResult notContains(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult containsAnyOf(ELEMENT_TYPE... values);
 
-    CompletableResult containsAnyOf(List<ELEMENT_TYPE> values);
-
-    CompletableResult containsExactly(ELEMENT_TYPE... values);
-
-    CompletableResult containsExactly(List<ELEMENT_TYPE> values);
-
-    CompletableResult containsExactlyInAnyOrder(ELEMENT_TYPE... values);
-
-    CompletableResult containsExactlyInAnyOrder(List<ELEMENT_TYPE> values);
+    CompletableResult containsAnyOf(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult containsOnly(ELEMENT_TYPE... values);
 
-    CompletableResult containsOnly(List<ELEMENT_TYPE> values);
+    CompletableResult containsOnly(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult notContainsOnly(ELEMENT_TYPE... values);
 
-    CompletableResult notContainsOnly(List<ELEMENT_TYPE> values);
+    CompletableResult notContainsOnly(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult containsOnlyOnce(ELEMENT_TYPE... values);
 
-    CompletableResult containsOnlyOnce(List<ELEMENT_TYPE> values);
+    CompletableResult containsOnlyOnce(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult containsMoreThenOnce(ELEMENT_TYPE... values);
 
-    CompletableResult containsMoreThenOnce(List<ELEMENT_TYPE> values);
+    CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult startsWith(ELEMENT_TYPE value);
 
@@ -55,27 +46,23 @@ public interface IArraysCondition<ELEMENT_TYPE> extends ICondition<ELEMENT_TYPE[
 
     CompletableResult isSubsetOf(ELEMENT_TYPE... values);
 
-    CompletableResult isSubsetOf(List<ELEMENT_TYPE> values);
+    CompletableResult isSubsetOf(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult isNotSubsetOf(ELEMENT_TYPE... values);
 
-    CompletableResult isNotSubsetOf(List<ELEMENT_TYPE> values);
+    CompletableResult isNotSubsetOf(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult isEmpty();
 
     CompletableResult isNotEmpty();
 
-    CompletableResult containsAll(ELEMENT_TYPE... values);
-
-    CompletableResult containsAll(List<ELEMENT_TYPE> values);
-
     CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values);
 
-    CompletableResult doesNotHasAnyElementsOfTypes(List<ELEMENT_TYPE> values);
+    CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult hasAnyElementsOfTypes(ELEMENT_TYPE... values);
 
-    CompletableResult hasAnyElementsOfTypes(List<ELEMENT_TYPE> values);
+    CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult doesNotContainsNull();
 

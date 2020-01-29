@@ -29,16 +29,16 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
 
     @Override
     public CompletableResult notContains(ELEMENT_TYPE... values) {
-        return this.functionToApply.apply(a -> a.contains(values));
+        return this.functionToApply.apply(a -> a.notContains(values));
     }
 
     @Override
-    public CompletableResult contains(List<ELEMENT_TYPE> values) {
+    public CompletableResult contains(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
     @Override
-    public CompletableResult notContains(List<ELEMENT_TYPE> values) {
+    public CompletableResult notContains(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -48,27 +48,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsAnyOf(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactly(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactly(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactlyInAnyOrder(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactlyInAnyOrder(List<ELEMENT_TYPE> values) {
+    public CompletableResult containsAnyOf(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -78,7 +58,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsOnly(List<ELEMENT_TYPE> values) {
+    public CompletableResult containsOnly(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -88,7 +68,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult notContainsOnly(List<ELEMENT_TYPE> values) {
+    public CompletableResult notContainsOnly(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -98,7 +78,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsOnlyOnce(List<ELEMENT_TYPE> values) {
+    public CompletableResult containsOnlyOnce(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -108,7 +88,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(List<ELEMENT_TYPE> values) {
+    public CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -138,7 +118,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult isSubsetOf(List<ELEMENT_TYPE> values) {
+    public CompletableResult isSubsetOf(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -148,7 +128,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult isNotSubsetOf(List<ELEMENT_TYPE> values) {
+    public CompletableResult isNotSubsetOf(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -163,22 +143,12 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsAll(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsAll(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
     public CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values) {
         return null;
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(List<ELEMENT_TYPE> values) {
+    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -188,7 +158,7 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(List<ELEMENT_TYPE> values) {
+    public CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 

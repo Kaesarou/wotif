@@ -4,100 +4,91 @@ import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.condition.AbstractCondition;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYPE[]> implements IArraysCondition<ELEMENT_TYPE> {
+public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYPE[]>
+        implements IArraysCondition<ELEMENT_TYPE> {
+
+    private InternalArraysConditions<ELEMENT_TYPE> arrays;
 
     public ArraysCondition(ELEMENT_TYPE[] term) {
         super(term);
+        this.arrays = new InternalArraysConditions<>(this.term);
     }
 
     @Override
     @SafeVarargs
     public final CompletableResult contains(ELEMENT_TYPE... values) {
-        List<ELEMENT_TYPE> convertedValues = Arrays.asList(values);
-        boolean result = Arrays.asList(this.term.value()).containsAll(convertedValues);
+        boolean result = this.arrays.contains(Arrays.asList(values));
+        return new CompletableResult(result);
+    }
+
+    @Override
+    public CompletableResult contains(Iterable<ELEMENT_TYPE> values) {
+        boolean result = this.arrays.contains(values);
         return new CompletableResult(result);
     }
 
     @Override
     @SafeVarargs
     public final CompletableResult notContains(ELEMENT_TYPE... values) {
-        List<ELEMENT_TYPE> convertedValues = Arrays.asList(values);
-        boolean result = !Arrays.asList(this.term.value()).containsAll(convertedValues);
+        boolean result = !this.arrays.contains(Arrays.asList(values));
         return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult contains(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult notContains(List<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult notContains(Iterable<ELEMENT_TYPE> values) {
+        boolean result = !this.arrays.contains(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult containsAnyOf(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = this.arrays.containsAnyOf(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult containsAnyOf(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactly(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactly(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactlyInAnyOrder(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsExactlyInAnyOrder(List<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult containsAnyOf(Iterable<ELEMENT_TYPE> values) {
+        boolean result = this.arrays.containsAnyOf(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult containsOnly(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = this.arrays.containsOnly(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult containsOnly(List<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult containsOnly(Iterable<ELEMENT_TYPE> values) {
+        boolean result = this.arrays.containsOnly(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult notContainsOnly(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = !this.arrays.containsOnly(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult notContainsOnly(List<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult notContainsOnly(Iterable<ELEMENT_TYPE> values) {
+        boolean result = !this.arrays.containsOnly(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult containsOnlyOnce(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = this.arrays.containsOnlyOnce(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult containsOnlyOnce(List<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult containsOnlyOnce(Iterable<ELEMENT_TYPE> values) {
+        boolean result = this.arrays.containsOnly(values);
+        return new CompletableResult(result);
     }
 
     @Override
@@ -106,7 +97,7 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(List<ELEMENT_TYPE> values) {
+    public CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -136,7 +127,7 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult isSubsetOf(List<ELEMENT_TYPE> values) {
+    public CompletableResult isSubsetOf(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -146,7 +137,7 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult isNotSubsetOf(List<ELEMENT_TYPE> values) {
+    public CompletableResult isNotSubsetOf(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -161,22 +152,12 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult containsAll(ELEMENT_TYPE... values) {
-        return null;
-    }
-
-    @Override
-    public CompletableResult containsAll(List<ELEMENT_TYPE> values) {
-        return null;
-    }
-
-    @Override
     public CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values) {
         return null;
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(List<ELEMENT_TYPE> values) {
+    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -186,7 +167,7 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(List<ELEMENT_TYPE> values) {
+    public CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
