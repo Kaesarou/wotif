@@ -92,97 +92,120 @@ public class ArraysCondition<ELEMENT_TYPE> extends AbstractCondition<ELEMENT_TYP
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(ELEMENT_TYPE... values) {
-        return null;
+    public CompletableResult containsMoreThanOnce(ELEMENT_TYPE... values) {
+        boolean result = this.arrays.containsMoreThanOnce(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult containsMoreThanOnce(Iterable<ELEMENT_TYPE> values) {
+        boolean result = this.arrays.containsMoreThanOnce(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult startsWith(ELEMENT_TYPE value) {
-        return null;
+        boolean result = this.arrays.startsWith(value);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult notStartsWith(ELEMENT_TYPE value) {
-        return null;
+        boolean result = !this.arrays.startsWith(value);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult endsWith(ELEMENT_TYPE value) {
-        return null;
+        boolean result = this.arrays.endsWith(value);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult notEndsWith(ELEMENT_TYPE value) {
-        return null;
+        boolean result = !this.arrays.endsWith(value);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isSubsetOf(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = this.arrays.isSubsetOf(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isSubsetOf(Iterable<ELEMENT_TYPE> values) {
-        return null;
+        boolean result = this.arrays.isSubsetOf(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isNotSubsetOf(ELEMENT_TYPE... values) {
-        return null;
+        boolean result = !this.arrays.isSubsetOf(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isNotSubsetOf(Iterable<ELEMENT_TYPE> values) {
-        return null;
+        boolean result = !this.arrays.isSubsetOf(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isEmpty() {
-        return null;
+        boolean result = this.arrays.isEmpty();
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult isNotEmpty() {
-        return null;
+        boolean result = this.arrays.isEmpty();
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values) {
-        return null;
+    public CompletableResult doesNotHasAnyElementsOfTypes(Class<?>... values) {
+        boolean result = !this.arrays.hasAnyElementsOfTypes(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<Class<?>> values) {
+        boolean result = !this.arrays.hasAnyElementsOfTypes(values);
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(ELEMENT_TYPE... values) {
-        return null;
+    public CompletableResult hasAnyElementsOfTypes(Class<?>... values) {
+        boolean result = this.arrays.hasAnyElementsOfTypes(Arrays.asList(values));
+        return new CompletableResult(result);
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
-        return null;
+    public CompletableResult hasAnyElementsOfTypes(Iterable<Class<?>> values) {
+        boolean result = this.arrays.hasAnyElementsOfTypes(values);
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult doesNotContainsNull() {
-        return null;
+        boolean result = !this.arrays.containsNull();
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult containsNull() {
-        return null;
+        boolean result = this.arrays.containsNull();
+        return new CompletableResult(result);
     }
 
     @Override
     public CompletableResult containsOnlyNull() {
+        return null;
+    }
+
+    @Override
+    public CompletableResult doesNotContainsOnlyNull() {
         return null;
     }
 

@@ -4,7 +4,6 @@ import org.wotif.core.api.CompletableResult;
 import org.wotif.core.api.condition.AbstractJoinCondition;
 import org.wotif.core.api.condition.JoinEnum;
 
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -83,12 +82,12 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(ELEMENT_TYPE... values) {
+    public CompletableResult containsMoreThanOnce(ELEMENT_TYPE... values) {
         return null;
     }
 
     @Override
-    public CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values) {
+    public CompletableResult containsMoreThanOnce(Iterable<ELEMENT_TYPE> values) {
         return null;
     }
 
@@ -143,22 +142,22 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values) {
+    public CompletableResult doesNotHasAnyElementsOfTypes(Class<?>... values) {
         return null;
     }
 
     @Override
-    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
+    public CompletableResult doesNotHasAnyElementsOfTypes(Iterable<Class<?>> values) {
         return null;
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(ELEMENT_TYPE... values) {
+    public CompletableResult hasAnyElementsOfTypes(Class<?>... values) {
         return null;
     }
 
     @Override
-    public CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values) {
+    public CompletableResult hasAnyElementsOfTypes(Iterable<Class<?>> values) {
         return null;
     }
 
@@ -174,6 +173,11 @@ public class ArraysJoinCondition<ELEMENT_TYPE>
 
     @Override
     public CompletableResult containsOnlyNull() {
+        return null;
+    }
+
+    @Override
+    public CompletableResult doesNotContainsOnlyNull() {
         return null;
     }
 

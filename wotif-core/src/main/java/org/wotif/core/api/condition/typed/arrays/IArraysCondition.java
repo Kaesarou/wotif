@@ -32,9 +32,9 @@ public interface IArraysCondition<ELEMENT_TYPE> extends ICondition<ELEMENT_TYPE[
 
     CompletableResult containsOnlyOnce(Iterable<ELEMENT_TYPE> values);
 
-    CompletableResult containsMoreThenOnce(ELEMENT_TYPE... values);
+    CompletableResult containsMoreThanOnce(ELEMENT_TYPE... values);
 
-    CompletableResult containsMoreThenOnce(Iterable<ELEMENT_TYPE> values);
+    CompletableResult containsMoreThanOnce(Iterable<ELEMENT_TYPE> values);
 
     CompletableResult startsWith(ELEMENT_TYPE value);
 
@@ -56,19 +56,21 @@ public interface IArraysCondition<ELEMENT_TYPE> extends ICondition<ELEMENT_TYPE[
 
     CompletableResult isNotEmpty();
 
-    CompletableResult doesNotHasAnyElementsOfTypes(ELEMENT_TYPE... values);
+    CompletableResult doesNotHasAnyElementsOfTypes(Class<?>... values);
 
-    CompletableResult doesNotHasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values);
+    CompletableResult doesNotHasAnyElementsOfTypes(Iterable<Class<?>> values);
 
-    CompletableResult hasAnyElementsOfTypes(ELEMENT_TYPE... values);
+    CompletableResult hasAnyElementsOfTypes(Class<?>... values);
 
-    CompletableResult hasAnyElementsOfTypes(Iterable<ELEMENT_TYPE> values);
+    CompletableResult hasAnyElementsOfTypes(Iterable<Class<?>> values);
 
     CompletableResult doesNotContainsNull();
 
     CompletableResult containsNull();
 
     CompletableResult containsOnlyNull();
+
+    CompletableResult doesNotContainsOnlyNull();
 
     CompletableResult hasDuplicate();
 
