@@ -2,7 +2,6 @@ package org.wotif.core.api.arrays;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-
 import java.util.Arrays;
 
 import static org.wotif.core.api.Conditions.iF;
@@ -245,6 +244,17 @@ public class ArraysConditionTest {
         Integer result2 = iF(arrayToTest2).contains(comparator).then(() -> 1)
                 .orElse(() -> 0).endIF();
         Assertions.assertThat(result2).isEqualTo(1);
+    }
+
+    @Test
+    public void testIfCharArrayContains() {
+        char[] arrayToTest1 = {'a', 'b', 'c', 'd'};
+        Integer result1 = iF(arrayToTest1).contains('a').then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        char[] arrayToTest2 = {'a', 'b', 'c', 'd'};
+        Integer result2 = iF(arrayToTest2).contains('e').then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
     }
 
 }

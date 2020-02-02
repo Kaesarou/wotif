@@ -4,10 +4,7 @@ import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
 import org.wotif.core.api.condition.typed.character.CharacterCondition;
 import org.wotif.core.api.condition.typed.character.CharacterJoinCondition;
-import org.wotif.core.api.condition.typed.iterables.arrays.ArraysCondition;
-import org.wotif.core.api.condition.typed.iterables.arrays.ArraysJoinCondition;
-import org.wotif.core.api.condition.typed.iterables.arrays.IntArraysCondition;
-import org.wotif.core.api.condition.typed.iterables.arrays.IntArraysJoinCondition;
+import org.wotif.core.api.condition.typed.iterables.arrays.*;
 import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
@@ -80,11 +77,46 @@ public class Conditions {
     public static <T>ArraysJoinCondition<T> iFAllOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
     @SafeVarargs
     public static <T>ArraysJoinCondition<T> iFNoneOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays boolean
+    public static BooleanArraysCondition iF(boolean[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static BooleanArraysJoinCondition iFAnyOf(boolean[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static BooleanArraysJoinCondition iFAllOf(boolean[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static BooleanArraysJoinCondition iFNoneOf(boolean[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays byte
+    public static ByteArraysCondition iF(byte[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static ByteArraysJoinCondition iFAnyOf(byte[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static ByteArraysJoinCondition iFAllOf(byte[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static ByteArraysJoinCondition iFNoneOf(byte[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays char
+    public static CharArraysCondition iF(char[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static CharArraysJoinCondition iFAnyOf(char[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static CharArraysJoinCondition iFAllOf(char[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static CharArraysJoinCondition iFNoneOf(char[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays double
+    public static DoubleArraysCondition iF(double[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static DoubleArraysJoinCondition iFAnyOf(double[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static DoubleArraysJoinCondition iFAllOf(double[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static DoubleArraysJoinCondition iFNoneOf(double[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays float
+    public static FloatArraysCondition iF(float[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static FloatArraysJoinCondition iFAnyOf(float[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static FloatArraysJoinCondition iFAllOf(float[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static FloatArraysJoinCondition iFNoneOf(float[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
     //Arrays int
     public static IntArraysCondition iF(int[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
     public static IntArraysJoinCondition iFAnyOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
     public static IntArraysJoinCondition iFAllOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
     public static IntArraysJoinCondition iFNoneOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays long
+    public static LongArraysCondition iF(long[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static LongArraysJoinCondition iFAnyOf(long[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static LongArraysJoinCondition iFAllOf(long[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static LongArraysJoinCondition iFNoneOf(long[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays short
+    public static ShortArraysCondition iF(short[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static ShortArraysJoinCondition iFAnyOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static ShortArraysJoinCondition iFAllOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static ShortArraysJoinCondition iFNoneOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
 
 }
 
