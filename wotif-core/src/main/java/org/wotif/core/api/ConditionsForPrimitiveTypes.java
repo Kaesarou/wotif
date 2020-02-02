@@ -18,7 +18,7 @@ import org.wotif.core.api.condition.typed.number.longs.LongJoinCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortCondition;
 import org.wotif.core.api.condition.typed.number.shorts.ShortJoinCondition;
 
-public class ConditionsForPrimitiveTypes {
+class ConditionsForPrimitiveTypes {
 
     //Boolean
     public static BooleanCondition iF(Boolean term) { return new BooleanCondition(term); }

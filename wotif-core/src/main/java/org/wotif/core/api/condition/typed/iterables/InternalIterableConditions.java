@@ -1,24 +1,25 @@
-package org.wotif.core.api.condition.typed.arrays;
+package org.wotif.core.api.condition.typed.iterables;
 
 import org.wotif.core.api.Term;
 
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-public class InternalArraysConditions<TYPE> {
+class InternalIterableConditions<TYPE> {
 
-    private final Term<TYPE[]> terms;
+    private final Term<Iterable<TYPE>> terms;
 
-    InternalArraysConditions(Term<TYPE[]> term) {
-        this.terms = term;
+    public InternalIterableConditions(Iterable<TYPE> term) {
+        this.terms = new Term<>(term);
     }
 
     private Stream<TYPE> stream() {
-        return Arrays.stream(this.terms.value());
+        return iterableToStream(this.terms.value());
     }
 
     private Stream<TYPE> iterableToStream(Iterable<TYPE> values) {
@@ -79,6 +80,54 @@ public class InternalArraysConditions<TYPE> {
 
     boolean containsNull() {
         return stream().anyMatch(Objects::isNull);
+    }
+
+    boolean containsOnlyNull() {
+        return stream().allMatch(Objects::isNull);
+    }
+
+    boolean hasDuplicate() {
+        return !stream().allMatch(new HashSet<>()::add);
+    }
+
+    boolean anyMatch(Predicate<? super TYPE> predicate) {
+        return stream().anyMatch(predicate);
+    }
+
+    boolean allMatch(Predicate<? super TYPE> predicate) {
+        return stream().anyMatch(predicate);
+    }
+
+    boolean noneMatch(Predicate<? super TYPE> predicate) {
+        return stream().anyMatch(predicate);
+    }
+
+    boolean hasSize(long value) {
+        return stream().count() == value;
+    }
+
+    boolean hasSameSizeAs(Iterable<TYPE> values) {
+        return hasSize(iterableToStream(values).count());
+    }
+
+    boolean hasSizeBetween(long start, long end) {
+        return stream().count() >= start && stream().count() <= end;
+    }
+
+    boolean hasSizeGreaterThan(long size) {
+        return stream().count() > size;
+    }
+
+    boolean hasSizeGreaterThanOrEqualTo(long size) {
+        return stream().count() >= size;
+    }
+
+    boolean hasSizeLessThan(long size) {
+        return stream().count() < size;
+    }
+
+    boolean hasSizeLessThanOrEqualTo(long size) {
+        return stream().count() <= size;
     }
 
 }

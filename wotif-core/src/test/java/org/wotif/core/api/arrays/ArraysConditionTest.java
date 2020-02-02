@@ -12,14 +12,14 @@ public class ArraysConditionTest {
     @Test
     public void testIfArrayContainsThenReturn1() {
         Character[] arrayToTest = {'a', 'b', 'c'};
-        Integer result = iF(arrayToTest).contains('b').then(() -> 1).endIF();
+        Integer result = iF(arrayToTest).contains('c').then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void testIfArrayNotContainsThenReturn1() {
         Character[] arrayToTest = {'a', 'b', 'c'};
-        Integer result = iF(arrayToTest).notContains('d').then(() -> 1).endIF();
+        Integer result = iF(arrayToTest).doesNotContains('d').then(() -> 1).endIF();
         Assertions.assertThat(result).isEqualTo(1);
     }
 
@@ -48,9 +48,9 @@ public class ArraysConditionTest {
     @Test
     public void testIfNotContainsOnly() {
         Integer[] arrayToTest = {1, 2, 3, 4};
-        Integer result1 = iF(arrayToTest).notContainsOnly(1, 2, 3).then(() -> 1).endIF();
+        Integer result1 = iF(arrayToTest).doesNotContainsOnly(1, 2, 3).then(() -> 1).endIF();
         Assertions.assertThat(result1).isEqualTo(1);
-        Integer result2 = iF(arrayToTest).notContainsOnly(1, 2, 3, 4)
+        Integer result2 = iF(arrayToTest).doesNotContainsOnly(1, 2, 3, 4)
                 .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result2).isEqualTo(0);
     }
@@ -175,6 +175,76 @@ public class ArraysConditionTest {
         Integer result2 = iF(arrayToTest2).doesNotContainsNull().then(() -> 1)
                 .orElse(() -> 0).endIF();
         Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfContainsOnlyNull() {
+        Integer[] arrayToTest1 = {null, null, null, null};
+        Integer result1 = iF(arrayToTest1).containsOnlyNull().then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        Integer[] arrayToTest2 = {1, 2, 3, 4, null};
+        Integer result2 = iF(arrayToTest2).containsOnlyNull().then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfDoesNotContainsOnlyNull() {
+        Integer[] arrayToTest1 = {null, null, null, 1};
+        Integer result1 = iF(arrayToTest1).doesNotContainsOnlyNull().then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        Integer[] arrayToTest2 = {null, null, null, null};
+        Integer result2 = iF(arrayToTest2).doesNotContainsOnlyNull().then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfContainsDuplicate() {
+        Integer[] arrayToTest1 = {1, 1, 2, 1};
+        Integer result1 = iF(arrayToTest1).hasDuplicate().then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        Integer[] arrayToTest2 = {1, 2, 3, null};
+        Integer result2 = iF(arrayToTest2).hasDuplicate().then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testIfNotContainsDuplicate() {
+        Integer[] arrayToTest1 = {1, 2, 3, 4};
+        Integer result1 = iF(arrayToTest1).doesNotHasDuplicate().then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        Integer[] arrayToTest2 = {1, null, 3, null};
+        Integer result2 = iF(arrayToTest2).doesNotHasDuplicate().then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testHasSameSizeAs() {
+        Integer[] arrayToTest1 = {1, 2, 3, 4};
+        Integer[] arrayToTest2 = {1, null, 3, null};
+        Integer result1 = iF(arrayToTest1).hasSameSizeAs(arrayToTest2).then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(1);
+        Integer[] arrayToTest3 = {1, 2, 3, 4};
+        Integer[] arrayToTest4 = {1, null, 3};
+        Integer result2 = iF(arrayToTest3).hasSameSizeAs(arrayToTest4).then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+        Assertions.assertThat(arrayToTest1).contains(1);
+    }
+
+    @Test
+    public void testIfIntArrayContains() {
+        int[] arrayToTest1 = {1, 1, 2, 1};
+        Integer result1 = iF(arrayToTest1).containsNull().then(() -> 1).endIF();
+        Assertions.assertThat(result1).isEqualTo(null);
+        int[] arrayToTest2 = {1, 2, 3, 4};
+        int comparator = 1;
+        Integer result2 = iF(arrayToTest2).contains(comparator).then(() -> 1)
+                .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(1);
     }
 
 }

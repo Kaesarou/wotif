@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 public class Result {
 
-    private boolean value;
+    private final boolean value;
 
     public boolean value() {
         return this.value;

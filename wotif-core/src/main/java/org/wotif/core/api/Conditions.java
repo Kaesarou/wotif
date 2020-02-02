@@ -1,11 +1,13 @@
 package org.wotif.core.api;
 
-import org.wotif.core.api.condition.typed.arrays.ArraysCondition;
-import org.wotif.core.api.condition.typed.arrays.ArraysJoinCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
 import org.wotif.core.api.condition.typed.character.CharacterCondition;
 import org.wotif.core.api.condition.typed.character.CharacterJoinCondition;
+import org.wotif.core.api.condition.typed.iterables.arrays.ArraysCondition;
+import org.wotif.core.api.condition.typed.iterables.arrays.ArraysJoinCondition;
+import org.wotif.core.api.condition.typed.iterables.arrays.IntArraysCondition;
+import org.wotif.core.api.condition.typed.iterables.arrays.IntArraysJoinCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
 import org.wotif.core.api.condition.typed.number.floating.doubles.DoubleCondition;
@@ -70,14 +72,19 @@ public class Conditions {
     public static CharacterJoinCondition iFAnyOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
     public static CharacterJoinCondition iFAllOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
     public static CharacterJoinCondition iFNoneOf(Character... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
-    //Arrays
-    public static <T>ArraysCondition<T> iF(T[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    //Arrays Generic
+    public static <T> ArraysCondition<T> iF(T[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
     @SafeVarargs
     public static <T>ArraysJoinCondition<T> iFAnyOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
     @SafeVarargs
     public static <T>ArraysJoinCondition<T> iFAllOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
     @SafeVarargs
     public static <T>ArraysJoinCondition<T> iFNoneOf(T[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Arrays int
+    public static IntArraysCondition iF(int[] term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    public static IntArraysJoinCondition iFAnyOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    public static IntArraysJoinCondition iFAllOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    public static IntArraysJoinCondition iFNoneOf(int[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
 
 }
 
