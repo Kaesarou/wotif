@@ -1,6 +1,8 @@
 package org.wotif.core.api;
 
 import org.wotif.core.api.condition.JoinEnum;
+import org.wotif.core.api.condition.typed.iterables.IterableCondition;
+import org.wotif.core.api.condition.typed.iterables.IterableJoinCondition;
 import org.wotif.core.api.condition.typed.iterables.arrays.*;
 import org.wotif.core.api.condition.typed.string.StringCondition;
 import org.wotif.core.api.condition.typed.string.StringJoinCondition;
@@ -60,5 +62,13 @@ class ConditionsForNonPrimitiveTypes extends ConditionsForPrimitiveTypes {
     public static ShortArraysJoinCondition iFAnyOf(short[]... terms) { return new ShortArraysJoinCondition(JoinEnum.ANYOF, terms); }
     public static ShortArraysJoinCondition iFAllOf(short[]... terms) { return new ShortArraysJoinCondition(JoinEnum.ALLOF, terms); }
     public static ShortArraysJoinCondition iFNoneOf(short[]... terms) { return new ShortArraysJoinCondition(JoinEnum.NONEOF, terms); }
+    //Iterables
+    public static <T> IterableCondition<T> iF(Iterable<T> term) { return new IterableCondition<>(term); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFAnyOf(Iterable<T>... terms) { return new IterableJoinCondition<>(JoinEnum.ANYOF, terms); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFAllOf(Iterable<T>... terms) { return new IterableJoinCondition<>(JoinEnum.ALLOF, terms); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFNoneOf(Iterable<T>... terms) { return new IterableJoinCondition<>(JoinEnum.NONEOF, terms); }
 
 }

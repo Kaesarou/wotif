@@ -4,6 +4,8 @@ import org.wotif.core.api.condition.typed.booleans.BooleanCondition;
 import org.wotif.core.api.condition.typed.booleans.BooleanJoinCondition;
 import org.wotif.core.api.condition.typed.character.CharacterCondition;
 import org.wotif.core.api.condition.typed.character.CharacterJoinCondition;
+import org.wotif.core.api.condition.typed.iterables.IterableCondition;
+import org.wotif.core.api.condition.typed.iterables.IterableJoinCondition;
 import org.wotif.core.api.condition.typed.iterables.arrays.*;
 import org.wotif.core.api.condition.typed.number.bytes.ByteCondition;
 import org.wotif.core.api.condition.typed.number.bytes.ByteJoinCondition;
@@ -117,6 +119,14 @@ public class Conditions {
     public static ShortArraysJoinCondition iFAnyOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
     public static ShortArraysJoinCondition iFAllOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
     public static ShortArraysJoinCondition iFNoneOf(short[]... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
+    //Iterables
+    public static <T> IterableCondition<T> iF(Iterable<T> term) { return ConditionsForNonPrimitiveTypes.iF(term); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFAnyOf(Iterable<T>... terms) { return ConditionsForNonPrimitiveTypes.iFAnyOf(terms); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFAllOf(Iterable<T>... terms) { return ConditionsForNonPrimitiveTypes.iFAllOf(terms); }
+    @SafeVarargs
+    public static <T> IterableJoinCondition<T> iFNoneOf(Iterable<T>... terms) { return ConditionsForNonPrimitiveTypes.iFNoneOf(terms); }
 
 }
 

@@ -1,12 +1,17 @@
-package org.wotif.core.api.arrays;
+package org.wotif.core.api.iterables;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import static org.wotif.core.api.Conditions.iF;
+import static org.wotif.core.api.Conditions.iFAnyOf;
 
-public class ArraysConditionTest {
+public class IterablesConditionTest {
 
     @Test
     public void testIfArrayContainsThenReturn1() {
@@ -254,6 +259,23 @@ public class ArraysConditionTest {
         char[] arrayToTest2 = {'a', 'b', 'c', 'd'};
         Integer result2 = iF(arrayToTest2).contains('e').then(() -> 1)
                 .orElse(() -> 0).endIF();
+        Assertions.assertThat(result2).isEqualTo(0);
+    }
+
+    @Test
+    public void testIterables() {
+        List<Character> listCharacters = ImmutableList.of('a','b','c','d');
+        List<Character> listCharacters2 = ImmutableList.of('e','f','g','h');
+        Set<String> setStrings = ImmutableSet.of("aa","bb","cc","dd");
+        Integer result = iFAnyOf(listCharacters, listCharacters2).contains('c')
+                .and(iF(setStrings).hasSizeBetween(1,6))
+                .and(iF(listCharacters).anyMatch(e -> e.equals('b')))
+                .then(() -> 1).endIF();
+        Assertions.assertThat(result).isEqualTo(1);
+        Integer result2 = iFAnyOf(listCharacters, listCharacters2).contains('j')
+                .and(iF(setStrings).hasSizeBetween(1,6))
+                .and(iF(listCharacters).anyMatch(e -> e.equals('b')))
+                .then(() -> 1).orElse(() -> 0).endIF();
         Assertions.assertThat(result2).isEqualTo(0);
     }
 
