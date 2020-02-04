@@ -1,0 +1,3 @@
+[submodule "wotif-core"]
+	path = wotif-core
+	url = https://github.com/Kaesarou/wotif-core.git
