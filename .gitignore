@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+_site/
 
 # Log file
 *.log
