@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Very quick start | W.tif</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Very quick start" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Make fluent human readable conditions" />
+<meta property="og:description" content="Make fluent human readable conditions" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="W.tif" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"Very quick start","url":"http://localhost:4000/","name":"W.tif","description":"Make fluent human readable conditions","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1fe1c7feab4fcf259ebff8d4aed9d7254649f7ff">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">W.tif</h1>
+      <h2 class="project-tagline">Make fluent human readable conditions</h2>
+      
+        <a href="https://github.com/Ksarou/wotif" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h2 id="very-quick-start">Very quick start</h2>
+
+<p>This guide is for the Wotif core module.</p>
+
+<p>Wotif core Maven package is in its Alfa version and it is only available on github for now. To see how configure Apache Maven for use with GitHub Packages visit <a href="https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages">this page.</a></p>
+
+<h3 id="get-wotif-core-conditions">Get Wotif Core conditions</h3>
+
+<p>Add this to your pom.xml:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>dev.ksarou<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>wotif-core<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.0.1-alpha-2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>Run via command line:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn install
+</code></pre></div></div>
+
+<h3 id="add-wotif-methods-static-import">Add Wotif methods static import</h3>
+
+<p>Import all members at once by adding this line to your imports</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import static dev.ksarou.wotif.core.Conditions.<span class="err">*</span>;
+</code></pre></div></div>
+<p>Or individually if you prefer</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import static dev.ksarou.wotif.core.Conditions.when;
+import static dev.ksarou.wotif.core.Conditions.whenAllOf;
+import static dev.ksarou.wotif.core.Conditions.whenAnyOf;
+import static dev.ksarou.wotif.core.Conditions.whenNoneOf;
+</code></pre></div></div>
+
+<h3 id="use-wotif">Use Wotif</h3>
+
+<p>Start type <code class="language-plaintext highlighter-rouge">when()</code> method (or <code class="language-plaintext highlighter-rouge">whenAllOf()</code>, <code class="language-plaintext highlighter-rouge">whenAnyOf()</code>, <code class="language-plaintext highlighter-rouge">whenNoneOf()</code>) and pass it as a parameter the variable you want to test, then type a dot and let your IDE help you choose from the available methods.</p>
+
+<p><img src="assets/imgs/capture.png" alt="wotif capture" /></p>
+
+<p>Here an example for a trivial case</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String result = method();
+        when(result).isNotBlank()
+                .then(() -&gt; System.out.println("This string is not blank"))
+                .orElse(() -&gt; System.out.println("This string is blank"))
+                .end();
+</code></pre></div></div>
+
+<p>And here another for a more complex one</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>when(list_1).contains(stringToFind_1).and(when(list_1).doesNotContains(stringToFind_2))
+                .then(() -&gt; {
+                    // Instructions...
+                })
+                .orElse(when(list_2).contains(stringToFind_3).and(when(list_2).doesNotContains(stringToFind_4)), () -&gt; {
+                    // Instructions...
+                })
+                .orElse(() -&gt; {
+                    // Instructions...
+                });
+</code></pre></div></div>
+
+<p>You can also use or modify the terms you used in your condition, using methods like map or flatMap</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>when(integer).isNegative()
+                .map(i -&gt; i <span class="err">*</span> -1)
+                .peek(i -&gt; System.out.println(i + " is now positive"))
+                .getOrElse(integer);
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Ksarou/wotif">wotif</a> is maintained by <a href="https://github.com/Ksarou">Ksarou</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

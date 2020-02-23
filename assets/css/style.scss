@@ -1,0 +1,25 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+@font-face {
+ font-family: "tondu";
+ src: url("../fonts/Tondu_Beta.ttf")
+}
+
+.project-name {
+    font-family: "tondu";
+    font-size: 7em;
+    line-height: 1em;
+}
+
+.page-header {
+    background-color: #891599;
+    background-image: linear-gradient(120deg, #891599, #159957);
+}
+
+.main-content h1, .main-content h2, .main-content h3,
+.main-content h4, .main-content h5, .main-content h6 {
+    color: #891599;
+}
