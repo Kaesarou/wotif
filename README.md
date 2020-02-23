@@ -1,37 +1,79 @@
-## Welcome to GitHub Pages
+## Very quick start
 
-You can use the [editor on GitHub](https://github.com/Kaesarou/wotif/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This guide is for the Wotif core module.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Wotif core Maven package is in its Alfa version and it is only available on github for now. To see how configure Apache Maven for use with GitHub Packages visit [this page.](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages) 
 
-### Markdown
+### Get Wotif Core conditions
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Add this to your pom.xml:
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+<dependency>
+  <groupId>dev.ksarou</groupId>
+  <artifactId>wotif-core</artifactId>
+  <version>0.0.1-alpha-2</version>
+</dependency>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Run via command line:
 
-### Jekyll Themes
+```markdown
+mvn install
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Kaesarou/wotif/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Add Wotif methods static import
 
-### Support or Contact
+Import all members at once by adding this line to your imports
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```markdown
+import static dev.ksarou.wotif.core.Conditions.*;
+```
+Or individually if you prefer
+
+```markdown
+import static dev.ksarou.wotif.core.Conditions.when;
+import static dev.ksarou.wotif.core.Conditions.whenAllOf;
+import static dev.ksarou.wotif.core.Conditions.whenAnyOf;
+import static dev.ksarou.wotif.core.Conditions.whenNoneOf;
+```
+
+### Use Wotif
+
+Start type `when()` method (or `whenAllOf()`, `whenAnyOf()`, `whenNoneOf()`) and pass it as a parameter the variable you want to test, then type a dot and let your IDE help you choose from the available methods. 
+
+![wotif capture](assets/imgs/capture.png)
+
+Here an example for a trivial case
+
+```markdown
+String result = method();
+        when(result).isNotBlank()
+                .then(() -> System.out.println("This string is not blank"))
+                .orElse(() -> System.out.println("This string is blank"))
+                .end();
+```
+
+And here another for a more complex one
+
+```markdown
+when(list_1).contains(stringToFind_1).and(when(list_1).doesNotContains(stringToFind_2))
+                .then(() -> {
+                    // Instructions...
+                })
+                .orElse(when(list_2).contains(stringToFind_3).and(when(list_2).doesNotContains(stringToFind_4)), () -> {
+                    // Instructions...
+                })
+                .orElse(() -> {
+                    // Instructions...
+                });
+```
+
+You can also use or modify the terms you used in your condition, using methods like map or flatMap
+
+```markdown
+when(integer).isNegative()
+                .map(i -> i * -1)
+                .peek(i -> System.out.println(i + " is now positive"))
+                .getOrElse(integer);
+```
