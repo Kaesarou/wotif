@@ -54,7 +54,7 @@ String result = method();
                 .end();
 ```
 
-And here another for a more complex one
+And here another for a non-trivial one
 
 ```markdown
 when(list_1).contains(stringToFind_1).and(when(list_1).doesNotContains(stringToFind_2))
@@ -66,10 +66,10 @@ when(list_1).contains(stringToFind_1).and(when(list_1).doesNotContains(stringToF
                 })
                 .orElse(() -> {
                     // Instructions...
-                });
+                }).end();
 ```
 
-You can also use or modify the terms you used in your condition, using methods like map or flatMap
+You can also consume the terms you used in your condition, using methods like map or flatMap
 
 ```markdown
 when(integer).isNegative()
