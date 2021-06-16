@@ -2,7 +2,7 @@
 
 This guide is for the Wotif core module.
 
-Wotif core Maven package is in its Alfa version and it is only available on github for now. To see how configure Apache Maven for use with GitHub Packages visit [this page.](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages) 
+Wotif core Maven package is in its Alpha version and it is only available on github for now. To see how configure Apache Maven for use with GitHub Packages visit [this page.](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages) 
 
 ### Get Wotif Core conditions
 
